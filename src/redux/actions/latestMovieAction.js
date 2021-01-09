@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import axios from 'axios';
 import actionTypes from './actionTypes';
 
@@ -19,9 +20,10 @@ export function loadNowPlayingError(error) {
 
 export function loadNowPlaying() {
   return async (dispatch) => {
+    debugger;
     try {
-      const { data } = await axios.get(endpoint);
-      dispatch(loadNowPlaying(data));
+      const { data: { results } } = await axios.get(endpoint);
+      dispatch(loadNowPlayingSuccess(results));
     } catch (error) {
       dispatch(loadNowPlayingError);
     }
