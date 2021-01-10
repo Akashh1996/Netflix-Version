@@ -1,6 +1,7 @@
 module.exports = {
   env: {
     browser: true,
+    commonjs: true,
     es2021: true,
   },
   extends: [
@@ -12,11 +13,13 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 12,
-    sourceType: 'module',
   },
   plugins: [
     'react',
   ],
   rules: {
+    'linebreak-style': 0,
+    'global-require': 0,
+    'eslint linebreak-style': [0, 'error', 'windows'],
   },
 };
