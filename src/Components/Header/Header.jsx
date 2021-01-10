@@ -1,30 +1,56 @@
 /* eslint-disable no-debugger */
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { loadNowPlaying } from '../../redux/actions/latestMovieAction';
+import { useHistory } from 'react-router-dom';
+import { loadNowPlaying, loadBySearch, saveQuery } from '../../redux/actions/latestMovieAction';
 
 function Header({ nowPlaying, dispatch }) {
-  debugger;
+  const history = useHistory();
+
   useEffect(() => {
     if (!nowPlaying || !nowPlaying?.length) {
       dispatch(loadNowPlaying());
     }
   }, [nowPlaying?.length]);
 
+  const [query, setQuery] = useState('');
+  const handleOnChange = (event) => {
+    setQuery(event.target.value);
+    if (query.length > 0) {
+      dispatch(loadBySearch(query));
+    }
+  };
+  if (query.length > 0) {
+    history.push(`/search?q=${query}`);
+  } else {
+    history.push('/');
+  }
+  useEffect(() => {
+    dispatch(saveQuery(query));
+  }, [query]);
+
   return (
     <div>
-      {nowPlaying
-        && nowPlaying.length > 0
-            && nowPlaying.map((movies) => (
-              <img src={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`} alt="" />
-            ))}
+      <span>search</span>
+      {' '}
+      <form action="">
+        <input
+          type="text"
+          name=""
+          id=""
+          value={query}
+          onChange={handleOnChange}
+          spellCheck="false"
+        />
+      </form>
+      <br />
+
     </div>
   );
 }
 
 function mapStateToProps(state) {
-  debugger;
   return {
     nowPlaying: state.movieReducer.nowPlaying,
   };
