@@ -14,7 +14,12 @@ function SearchResult({ movieList, query }) {
         {movieList && query
             && movieList.length > 0
             && movieList.map((movies) => (
-              <img src={movies.poster_path ? `https://image.tmdb.org/t/p/w500/${movies.poster_path}` : 'https://m.media-amazon.com/images/M/MV5BMTYzODQzYjQtNTczNC00MzZhLTg1ZWYtZDUxYmQ3ZTY4NzA1XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_.jpg'} alt="" />
+              <>
+                {movies.poster_path !== null
+                              && <img src={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`} alt="" />}
+                {' '}
+
+              </>
             ))}
       </div>
 

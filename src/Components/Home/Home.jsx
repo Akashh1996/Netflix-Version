@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { loadNowPlaying } from '../../redux/actions/latestMovieAction';
+import './home.scss';
 
 function Home({ nowPlaying, dispatch }) {
   useEffect(() => {
@@ -12,15 +13,22 @@ function Home({ nowPlaying, dispatch }) {
   }, [nowPlaying?.length]);
 
   return (
-    <div>
-      <h1>hELLO WOLR</h1>
-      <br />
-      {nowPlaying
+    <>
+      <div className="cover-photo" />
+      <div className="now-playing">
+        <p>Now Playing</p>
+      </div>
+      <div className="image-wrapper">
+        {nowPlaying
         && nowPlaying.length > 0
             && nowPlaying.map((movies) => (
-              <img src={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`} alt="" />
+              <>
+                {movies.poster_path !== null
+                              && <img src={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`} alt="" />}
+              </>
             ))}
-    </div>
+      </div>
+    </>
   );
 }
 

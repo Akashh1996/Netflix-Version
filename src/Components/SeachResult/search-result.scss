@@ -4,26 +4,32 @@
     position: absolute;
 }
 
-input{
-    width: 152px;
-}
-.image-container{
+
+.image-wrapper{
     display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    position: relative;
+    padding: 10px;
+
 }
- img{
-    width: 180px;
+.image-wrapper::-webkit-scrollbar{
+    width: 0;
+   
+}
+ .image-wrapper img{
+    width: 130px;
     margin: 5px;
+    cursor: pointer;
 }
 li{
     list-style-type: none;
     margin: 5px;
 }
-img:hover
+.image-wrapper img:hover
 {
   transform: scale(1.20);
-  transition: 0.6s;
+  transition: 0.4s;
+
 
 }
