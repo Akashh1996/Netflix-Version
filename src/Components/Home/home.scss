@@ -1,0 +1,16 @@
+.cover-photo{
+    background-image: url("https://wallpaperaccess.com/full/37945.jpg");
+    height: 400px;
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    margin-top: 60px;
+}
+.now-playing{
+    padding: 5px 15px;
+    margin-top: 10px;
+}
+@media only screen and (max-width: 600px) {
+    .cover-photo {
+        background-position: center;
+    }
+  }
