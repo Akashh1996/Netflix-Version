@@ -28,6 +28,21 @@ function Home({ nowPlaying, dispatch }) {
               </>
             ))}
       </div>
+
+      {' '}
+      <div className="now-playing">
+        <p>Now Playing</p>
+      </div>
+      <div className="image-wrapper">
+        {nowPlaying
+        && nowPlaying.length > 0
+            && nowPlaying.map((movies) => (
+              <>
+                {movies.poster_path !== null
+                              && <img src={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`} alt="" />}
+              </>
+            ))}
+      </div>
     </>
   );
 }
