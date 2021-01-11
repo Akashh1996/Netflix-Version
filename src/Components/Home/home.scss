@@ -1,26 +1,40 @@
 .cover-photo{
     background-image: url("https://wallpaperaccess.com/full/210237.jpg");
-    height: 400px;
+    height: 480px;
     background-repeat: no-repeat; 
     background-size: cover; 
     margin-top: 60px;
+    opacity: 0.8;
 }
 .now-playing{
-    padding: 5px 15px;
+    padding: 5px 42px;
     margin-top: 10px;
 }
 .movie-play-info{
     display: flex;
     position: absolute;
-    top: 60%;
-    left: 2%;
+    top: 70%;
+    left: 3.2%;
+}
+.movie-titile{
+    position: absolute;
+    top: 40%;
+    left: 3.2%;
+    word-wrap: break-word;
+
 }
 .play{
     display: flex;
     background-color: white;
-    padding: 10px 20px;
+    padding: 10px 25px;
     color: black;
     border-radius: 4px ;
+    cursor: pointer;
+}
+.play:hover{
+    background-color: rgba(109,109,110,0.7);
+    transition: 0.5s;
+
 }
 .more-info{
     background-color: rgba(109,109,110,0.7);
@@ -29,7 +43,12 @@
     align-items: center;
     border-radius: 4px ;
     padding: 10px 20px;
-
+    margin-left: 15px;
+    cursor: pointer;
+}
+.more-info:hover{
+    background-color: rgba(109,109,110,0.6);
+    transition: 0.5s;
 
 }
 @media only screen and (max-width: 600px) {

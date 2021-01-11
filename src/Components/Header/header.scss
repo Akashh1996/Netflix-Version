@@ -1,4 +1,4 @@
-.top-nav {
+.nav {
     background-color: black;
     position: fixed; 
     width: 100%;
@@ -11,26 +11,28 @@ header{
 .nav-items {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     color: white;
-    height: 60px;
     font-size: 14px;
+    justify-content: space-between;
+    padding: 7px 40px;
 }
 .nav-logo {
-    width: 110px;
+    width: 100px;
     height: auto;
     margin: 0;
     padding: 0;
 }
-.nav-items-menu,
-.nav-items-user {
+.nav-items-left,
+.nav-items-right {
     display: flex;
     align-items: center;
 
 }
-.nav-items-menu>div,
-.nav-items-user>div {
-    margin: 0 10px;
+.nav-item__home{
+    margin-left: 30px;
+}
+.nav-item__latest, .nav-item__myList{
+    margin-left: 10px;
 }
 .nav-search{
     display: flex;
@@ -41,13 +43,12 @@ header{
     color: #999;
     border-radius: 2px;
 }
-
 input{
     background-color: #333333;
-    height: -webkit-fill-available;
     border: none;
     width: 270px;
     font-size: 16px;
+    border-radius: 2px;
 }
 .nav-search>div{
     padding-left: 10px;
@@ -61,19 +62,6 @@ input{
 .nav-option>div{
     margin: 0 4px;
 }
-.nav-register{
-    height: 40px;
-    display: flex;
-    align-items: center;
-    background-color: #ffe300;
-    color: black;
-    border-radius: 2px;
-    padding: 12px;
-}
-
-.mobile{
-    display: none;
-} 
 input:focus{
     outline: none;
   
@@ -82,17 +70,16 @@ input{
     background-color: #333333;
     height: -webkit-fill-available;
     border: none;
-    width: 270px;
+    width: 150px;
     font-size: 16px;
 }
-.nav-hover:hover{
-    color: yellow;
-    cursor: pointer;
-   
-}
-.search-hover:hover{
+
+.nav-search:hover, .search-input:hover{
     background-color: white;
 }
 .nav-logo img{
     max-width: 100%;
+}
+.nav-search{
+    margin-right: 15px;
 }
