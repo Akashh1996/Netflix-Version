@@ -28,15 +28,27 @@ function Header({ dispatch }) {
     dispatch(saveQuery(query));
   }, [query]);
 
+  const [show, handleShow] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        handleShow(true);
+      } else {
+        handleShow(false);
+      }
+    });
+  }, []);
+
   return (
     <header>
 
-      <nav className="nav">
+      <nav className={`nav ${show && 'nav__black'}`}>
         <div className="nav-items">
           <div className="nav-items-left">
             <div className="nav-logo">
               <Link to="/">
-                <img src="https://trello-attachments.s3.amazonaws.com/5f9fe516582bea5ce01d06b2/5ffc633b4dead97ec390f11b/741e7b7ee8502992cd8e9bafc0150771/netflix.jpg" alt="logo" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="logo" />
               </Link>
             </div>
             <div className="nav-item__home">
@@ -53,7 +65,7 @@ function Header({ dispatch }) {
           </div>
           <div className="nav-items-right">
             <div className="nav-search">
-              <div>
+              <div className="nav-search__icon">
                 {' '}
                 <SearchIcon />
                 {' '}
