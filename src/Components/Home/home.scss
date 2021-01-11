@@ -1,5 +1,5 @@
 .cover-photo{
-    background-image: url("https://wallpaperaccess.com/full/37945.jpg");
+    background-image: url("https://wallpaperaccess.com/full/210237.jpg");
     height: 400px;
     background-repeat: no-repeat; 
     background-size: cover; 
@@ -8,6 +8,29 @@
 .now-playing{
     padding: 5px 15px;
     margin-top: 10px;
+}
+.movie-play-info{
+    display: flex;
+    position: absolute;
+    top: 60%;
+    left: 2%;
+}
+.play{
+    display: flex;
+    background-color: white;
+    padding: 10px 20px;
+    color: black;
+    border-radius: 4px ;
+}
+.more-info{
+    background-color: rgba(109,109,110,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px ;
+    padding: 10px 20px;
+
+
 }
 @media only screen and (max-width: 600px) {
     .cover-photo {
