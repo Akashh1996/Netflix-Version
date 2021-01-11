@@ -27,12 +27,18 @@ header{
     display: flex;
     align-items: center;
 
+
 }
 .nav-item__home{
     margin-left: 30px;
 }
 .nav-item__latest, .nav-item__myList{
     margin-left: 10px;
+}
+a:hover{
+    color: rgba(255,255,255,0.75);
+    transition: 0.1s;
+
 }
 .nav-search{
     display: flex;
