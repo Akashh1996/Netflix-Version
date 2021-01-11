@@ -59,9 +59,6 @@ function Header({ dispatch }) {
             <div className="nav-item__latest">
               <Link to="/latest">Latest</Link>
             </div>
-            <div className="nav-item__myList">
-              <Link to="/MyList">My List</Link>
-            </div>
           </div>
           <div className="nav-items-right">
             <div className="nav-search">
