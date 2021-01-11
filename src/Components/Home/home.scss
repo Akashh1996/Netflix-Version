@@ -1,11 +1,11 @@
 .cover-photo{
-    background-image: url("https://wallpaperaccess.com/full/210237.jpg");
-    height: 420px;
+    background-image: url("https://occ-0-3898-360.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABQIWSt5ec916vZ4MmHLoJy-N20rQyZUl2eSHhPnmUM74-6NymKCpeFXJgAuUqtdpNRg2OHa3_Idggszxbg-ZTLquDdUG.webp?r=575");
+    height: 480px;
     background-repeat: no-repeat; 
     background-size: cover; 
     margin-top: 60px;
     opacity: 0.8;
-    background-position: center;
+    background-position: inherit;
     position: relative;
 }
 .now-playing{
@@ -21,10 +21,10 @@
 .movie-titile{
     position: absolute;
     top: 35%;
-    left: 3.2%;
-    word-wrap: break-word;
-    font-size: larger;
-
+    left: 3.6%;
+}
+.movie-titile img{
+    width: 300px;
 }
 .play{
     display: flex;
