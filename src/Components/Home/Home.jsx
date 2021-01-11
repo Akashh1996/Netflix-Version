@@ -2,8 +2,9 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { loadNowPlaying, loadPopular, loadUpComming } from '../../redux/actions/movieAction';
-
 import './home.scss';
 
 function Home({
@@ -29,7 +30,23 @@ function Home({
 
   return (
     <>
-      <div className="cover-photo" />
+      <div className="cover-photo">
+        <div>
+          JUSTICE LEAGUE
+        </div>
+        <div className="movie-play-info">
+          <div className="play">
+            {' '}
+            <PlayArrowIcon />
+            {' '}
+            PLAY
+          </div>
+          <div className="more-info">
+            <InfoOutlinedIcon />
+            MORE INFO
+          </div>
+        </div>
+      </div>
       <div className="now-playing">
         <p>Now Playing</p>
       </div>
