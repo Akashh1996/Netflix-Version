@@ -31,8 +31,10 @@ function Home({
   return (
     <>
       <div className="cover-photo">
-        <div>
-          JUSTICE LEAGUE
+        <div className="movie-titile">
+          <h1>THE</h1>
+          <h1>DARK</h1>
+          <h1>KNIGHT</h1>
         </div>
         <div className="movie-play-info">
           <div className="play">

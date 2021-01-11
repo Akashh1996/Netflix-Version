@@ -1,9 +1,8 @@
-/* eslint-disable no-debugger */
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
+import PropTypes from 'prop-types';
 import { loadBySearch, saveQuery } from '../../redux/actions/movieAction';
 import './header.scss';
 
@@ -11,7 +10,6 @@ function Header({ dispatch }) {
   const history = useHistory();
 
   const [query, setQuery] = useState('');
-  // eslint-disable-next-line no-unused-vars
   const handleOnChange = (event) => {
     setQuery(event.target.value);
     if (query.length > 0) {
@@ -31,34 +29,30 @@ function Header({ dispatch }) {
   }, [query]);
 
   return (
-
     <header>
-      <nav className="top-nav">
+
+      <nav className="nav">
         <div className="nav-items">
-          <div className="nav-items-menu">
-            <div className="nav-logo nav-hover" style={{ marginLeft: '-3px' }}>
+          <div className="nav-items-left">
+            <div className="nav-logo">
               <Link to="/">
-                <img src="https://assets.brand.microsites.netflix.io/assets/493f5bba-81a4-11e9-bf79-066b49664af6_cm_1440w.png?v=46" alt="logo" />
+                <img src="https://trello-attachments.s3.amazonaws.com/5f9fe516582bea5ce01d06b2/5ffc633b4dead97ec390f11b/741e7b7ee8502992cd8e9bafc0150771/netflix.jpg" alt="logo" />
               </Link>
-
             </div>
-
-            <div className="nav-option nav-hover">
-              <div>CINEMA</div>
-              <div>
-                {' '}
-                <div><i className="fa fa-caret-down" /></div>
-
-                {' '}
-              </div>
+            <div className="nav-item__home">
+              {' '}
+              <Link to="/">Home</Link>
+              {' '}
             </div>
-            <div className="nav-option nav-hover">FREE</div>
-            <div className="nav-option nav-hover">SUBSCRIPTION</div>
-
+            <div className="nav-item__latest">
+              <Link to="/latest">Latest</Link>
+            </div>
+            <div className="nav-item__myList">
+              <Link to="/MyList">My List</Link>
+            </div>
           </div>
-
-          <div className="nav-items-user">
-            <div className="nav-search search-hover">
+          <div className="nav-items-right">
+            <div className="nav-search">
               <div>
                 {' '}
                 <SearchIcon />
@@ -70,25 +64,23 @@ function Header({ dispatch }) {
                   name=""
                   id=""
                   placeholder="Search"
-                  className="search-hover"
+                  className="search-input"
                   value={query}
                   onChange={handleOnChange}
                 />
 
               </div>
             </div>
-            <div className="nav-signin nav-hover">SIGN IN</div>
-            <div className="nav-logo nav-hover">
+            <div className="user">
               <Link to="/">
                 <img
                   src="https://i.pinimg.com/originals/30/db/47/30db479e1558c3ed46b4ed23b3cd98ae.png"
                   alt="logo"
-                  style={{ width: '45px', borderRadius: '5px' }}
+                  style={{ width: '36px', borderRadius: '4px', marginTop: '3px' }}
                 />
               </Link>
 
             </div>
-            <div className="mobile nav-hover"><span className="material-icons">search</span></div>
 
           </div>
         </div>
@@ -97,20 +89,8 @@ function Header({ dispatch }) {
   );
 }
 
+Header.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+
+};
 export default connect()(Header);
-
-/*   <div>
-      <span>search</span>
-      {' '}
-      <form action="">
-    <input
-    type="text"
-    name=""
-    id=""
-    value={query}
-    onChange={handleOnChange}
-  />;
-
-      </form>
-
-    </div> */
