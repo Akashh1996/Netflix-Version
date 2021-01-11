@@ -6,7 +6,7 @@ const initialState = {};
 
 export default function movieReducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.LOAD_LATEST_MOVIES:
+    case actionTypes.LOAD_NOW_PLAYING:
       return {
         ...state,
         nowPlaying: action.nowPlaying,
@@ -20,6 +20,18 @@ export default function movieReducer(state = initialState, action) {
       return {
         ...state,
         query: action.query,
+      };
+    case actionTypes.LOAD_POPULAR:
+      debugger;
+      return {
+        ...state,
+        popular: action.popular,
+      };
+    case actionTypes.LOAD_UPCOMMING:
+      debugger;
+      return {
+        ...state,
+        upComming: action.upComming,
       };
     default:
       return state;
