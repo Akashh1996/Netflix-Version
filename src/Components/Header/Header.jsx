@@ -88,7 +88,7 @@ function Header({ dispatch }) {
                 <img
                   src="https://i.pinimg.com/originals/30/db/47/30db479e1558c3ed46b4ed23b3cd98ae.png"
                   alt="logo"
-                  style={{ width: '36px', borderRadius: '4px', marginTop: '3px' }}
+                  style={{ width: '34px', borderRadius: '4px', marginTop: '3px' }}
                 />
               </Link>
 
