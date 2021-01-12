@@ -19,8 +19,8 @@ function Home({
   return (
     <>
       <div className="cover-photo">
-        <div>
-          JUSTICE LEAGUE
+        <div className="movie-titile">
+          <img src="https://occ-0-3898-360.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABfKjHt3Q3fbfN1EAxsaseFT5T5_2rb14I4zhWZZHQfBdOetBrIlTePcuvKdlXH0gpsj2IwWAFnHhVudqTZUQDGFar_3i3KN9N168.webp?r=c40" alt="" />
         </div>
         <div className="movie-play-info">
           <div className="play">

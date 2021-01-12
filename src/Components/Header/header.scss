@@ -1,98 +1,69 @@
-.top-nav {
-    background-color: black;
+.nav {
     position: fixed; 
     width: 100%;
 	top: 0px;
-	z-index: 1000;
+    z-index: 1000;
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
 }
 header{
     width: 100%;
 }
+.nav__black{
+    background-color: black;
+}
 .nav-items {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     color: white;
-    height: 60px;
     font-size: 14px;
+    justify-content: space-between;
+    padding: 13px 40px;
 }
 .nav-logo {
-    width: 110px;
+    width: 100px;
     height: auto;
     margin: 0;
     padding: 0;
 }
-.nav-items-menu,
-.nav-items-user {
+.nav-items-left,
+.nav-items-right {
     display: flex;
     align-items: center;
 
-}
-.nav-items-menu>div,
-.nav-items-user>div {
-    margin: 0 10px;
-}
-.nav-search{
-    display: flex;
-    background-color: #333333;
-    flex-direction: row;
-    height: 40px;
-    align-items: center;
-    color: #999;
-    border-radius: 2px;
-}
 
-input{
-    background-color: #333333;
-    height: -webkit-fill-available;
-    border: none;
-    width: 270px;
-    font-size: 16px;
 }
-.nav-search>div{
-    padding-left: 10px;
+.nav-item__home{
+    margin-left: 30px;
 }
-.search-icon{
-    padding-top: 8px;
+.nav-item__latest, .nav-item__myList{
+    margin-left: 10px;
 }
-.nav-option{
-    display: flex;
-}
-.nav-option>div{
-    margin: 0 4px;
-}
-.nav-register{
-    height: 40px;
-    display: flex;
-    align-items: center;
-    background-color: #ffe300;
-    color: black;
-    border-radius: 2px;
-    padding: 12px;
-}
+a:hover{
+    color: rgba(255,255,255,0.75);
+    transition: 0.1s;
 
-.mobile{
-    display: none;
-} 
-input:focus{
-    outline: none;
-  
-}
-input{
-    background-color: #333333;
-    height: -webkit-fill-available;
-    border: none;
-    width: 270px;
-    font-size: 16px;
-}
-.nav-hover:hover{
-    color: yellow;
-    cursor: pointer;
-   
-}
-.search-hover:hover{
-    background-color: white;
 }
 .nav-logo img{
     max-width: 100%;
+}
+
+.nav-search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    border: 1px solid white;
+    margin-right: 15px;
+}
+input{
+    background-color: black;
+    border: none;
+    outline: none;
+    padding: 6px;
+    color: white;
+}
+.nav-search__icon{
+    margin-top: 4px;
+    padding-left: 7px;
 }
