@@ -5,11 +5,13 @@ import actionTypes from '../actions/actionTypes';
 const initialState = {};
 
 export default function movieReducer(state = initialState, action) {
+  debugger;
   switch (action.type) {
-    case actionTypes.LOAD_NOW_PLAYING:
+    case actionTypes.LOAD_MOVIES:
       return {
         ...state,
-        nowPlaying: action.nowPlaying,
+        allMovies: action.allMovies,
+        categories: action.categories,
       };
     case actionTypes.LOAD_MOVIE_BY_SEARCH:
       return {
@@ -20,18 +22,6 @@ export default function movieReducer(state = initialState, action) {
       return {
         ...state,
         query: action.query,
-      };
-    case actionTypes.LOAD_POPULAR:
-      debugger;
-      return {
-        ...state,
-        popular: action.popular,
-      };
-    case actionTypes.LOAD_UPCOMMING:
-      debugger;
-      return {
-        ...state,
-        upComming: action.upComming,
       };
     default:
       return state;

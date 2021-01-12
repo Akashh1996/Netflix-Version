@@ -1,19 +1,31 @@
+
 .cover-photo{
     background-image: url("https://wallpaperset.com/w/full/1/2/2/241466.jpg");
     height: 530px;
     background-repeat: no-repeat; 
     background-size: cover; 
     opacity: 0.8;
+    margin-bottom: 30px;
     position: relative;
 }
+
 .now-playing{
-    padding: 5px 42px;
+    padding: 2px 42px;
     margin-top: 5px;
 }
+
+.now-playing p{
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding-left: 5px;
+}
+
+
 .movie-play-info{
     display: flex;
     position: absolute;
-    top: 70%;
+    top: 76%;
     padding: 10px 43px;
 }
 .movie-titile{
@@ -53,6 +65,7 @@
 }
 .movie-description-wrapper p{
     margin-top: 10px;
+    line-height: 26px;
 }
 
 .more-info:hover{
