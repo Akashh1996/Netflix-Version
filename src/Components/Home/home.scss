@@ -1,6 +1,6 @@
 .cover-photo{
-    background-image: url("https://occ-0-3898-360.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABQIWSt5ec916vZ4MmHLoJy-N20rQyZUl2eSHhPnmUM74-6NymKCpeFXJgAuUqtdpNRg2OHa3_Idggszxbg-ZTLquDdUG.webp?r=575");
-    height: 90vh;
+    background-image: url("https://wallpaperset.com/w/full/1/2/2/241466.jpg");
+    height: 530px;
     background-repeat: no-repeat; 
     background-size: cover; 
     opacity: 0.8;
@@ -8,18 +8,18 @@
 }
 .now-playing{
     padding: 5px 42px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 .movie-play-info{
     display: flex;
     position: absolute;
     top: 70%;
-    left: 3.2%;
+    padding: 10px 43px;
 }
 .movie-titile{
     position: absolute;
-    top: 35%;
-    left: 3.6%;
+    top: 28%;
+    padding: 10px 43px;
 }
 .movie-titile img{
     width: 300px;
@@ -48,14 +48,15 @@
     margin-left: 15px;
     cursor: pointer;
 }
+.movie-description-wrapper{
+    max-width: 300px;
+}
+.movie-description-wrapper p{
+    margin-top: 10px;
+}
 
 .more-info:hover{
     background-color: rgba(109,109,110,0.6);
     transition: 0.5s;
 
 }
-@media only screen and (max-width: 600px) {
-    .cover-photo {
-        background-position: center;
-    }
-  }
