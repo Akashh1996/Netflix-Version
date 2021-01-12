@@ -4,11 +4,12 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import MoviesList from '../MoviesList/MoviesList';
 import { loadMovies } from '../../redux/actions/movieAction';
 import './home.scss';
 
 function Home({
-  dispatch, allMovies,
+  dispatch, allMovies, categories,
 }) {
   useEffect(() => {
     if (!allMovies) {
@@ -38,6 +39,12 @@ function Home({
       <div className="now-playing">
         <p>Now Playing</p>
       </div>
+      <div className="image-wrapper">
+        { categories?.length > 0 && categories.map((movies) => (
+          // eslint-disable-next-line no-console
+          <MoviesList key={movies} movies={movies} />
+        ))}
+      </div>
 
       {' '}
       <div className="now-playing">
@@ -55,6 +62,7 @@ function Home({
 function mapStateToProps(state) {
   return {
     allMovies: state.movieReducer.allMovies,
+    categories: state.movieReducer.categories,
   };
 }
 
