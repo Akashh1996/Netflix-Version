@@ -9,7 +9,6 @@ function SearchResult({ movieList, query }) {
   return (
 
     <div>
-      <br />
       <div className="image-container">
         {movieList && query
             && movieList.length > 0
