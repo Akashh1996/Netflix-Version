@@ -8,7 +8,7 @@ function MoviesListComponent({ movies, allMovies }) {
   return (
     <>
       <div className="now-playing">
-        <p>{movies.toUpperCase()}</p>
+        <p id={movies}>{movies.toUpperCase()}</p>
       </div>
       <ul className="image-wrapper">
         {
