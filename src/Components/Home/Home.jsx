@@ -21,7 +21,17 @@ function Home({
     <>
       <div className="cover-photo">
         <div className="movie-titile">
-          <img src="https://occ-0-3898-360.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABfKjHt3Q3fbfN1EAxsaseFT5T5_2rb14I4zhWZZHQfBdOetBrIlTePcuvKdlXH0gpsj2IwWAFnHhVudqTZUQDGFar_3i3KN9N168.webp?r=c40" alt="" />
+          <img src="https://occ-0-3898-360.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABTJxQjyxnIx-LtrusuM5QngSU94C0mEzqw_G0nT-gYTRiBuxMXPqlj7sM6F9UDtQiDMm0WX4UdvNjwA8BSwiXYzxJGvubqKBgothb-e3PEEHkjW-iCgjAscMR8Ivw_Jrh0H11Gs4HX3_8TYSVBjZI1bw4arbxZe7hmw37CGmf9ZG7Q.webp?r=366" alt="" />
+          <div className="movie-description-wrapper">
+            <p>
+              Waking from a coma, Vanessa finds lone soldier Axel protecting her
+              from a vampire apocalypse called
+              {' '}
+              <strong>The Rising</strong>
+              {' '}
+              and discovers she has unusual powers.
+            </p>
+          </div>
         </div>
         <div className="movie-play-info">
           <div className="play">
