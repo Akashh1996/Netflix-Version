@@ -11,6 +11,11 @@ export default function movieReducer(state = initialState, action) {
         ...state,
         nowPlaying: action.nowPlaying,
       };
+    case actionTypes.LOAD_MOVIES:
+      return {
+        ...state,
+        allMovies: action.allMovies,
+      };
     case actionTypes.LOAD_MOVIE_BY_SEARCH:
       return {
         ...state,
@@ -22,13 +27,12 @@ export default function movieReducer(state = initialState, action) {
         query: action.query,
       };
     case actionTypes.LOAD_POPULAR:
-      debugger;
       return {
         ...state,
         popular: action.popular,
       };
     case actionTypes.LOAD_UPCOMMING:
-      debugger;
+
       return {
         ...state,
         upComming: action.upComming,
