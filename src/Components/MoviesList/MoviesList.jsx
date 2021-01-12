@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
@@ -6,7 +7,10 @@ function MoviesListComponent({ movies, allMovies }) {
   const [moviesCategories] = useState(allMovies[movies]);
   return (
     <>
-      <ul>
+      <div className="now-playing">
+        <p>{movies.toUpperCase()}</p>
+      </div>
+      <ul className="image-wrapper">
         {
           moviesCategories && moviesCategories.map((movieList) => (
             <li key={movieList.id}>

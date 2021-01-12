@@ -46,24 +46,10 @@ function Home({
           </div>
         </div>
       </div>
-      <div className="now-playing">
-        <p>Now Playing</p>
-      </div>
-      <div className="image-wrapper">
-        { categories?.length > 0 && categories.map((movies) => (
-          // eslint-disable-next-line no-console
-          <MoviesList key={movies} movies={movies} />
-        ))}
-      </div>
 
-      {' '}
-      <div className="now-playing">
-        <p>Popular</p>
-      </div>
-
-      <div className="now-playing">
-        <p>UpComming</p>
-      </div>
+      { categories?.length > 0 && categories.map((movies) => (
+        <MoviesList key={movies} movies={movies} />
+      ))}
 
     </>
   );
