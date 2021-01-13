@@ -10,25 +10,27 @@
     overflow-y: hidden;
     overflow-x: scroll;
     position: relative;
-    padding: 10px 10px 0 38px;
-
+    padding: 10px 10px 6px 38px;
 }
+
 .image-wrapper::-webkit-scrollbar{
     width: 0;
-   
 }
- .image-wrapper img{
+
+.image-wrapper img{
     width: 130px;
     margin: 5px;
+
     cursor: pointer;
     border-radius: 10px;
 }
+
 li{
     list-style-type: none;
     margin: 5px;
     padding: 5px 0px;
 }
-.movie-card:hover
+.image-wrapper img:hover
 {
   transform: scale(1.20);
   transition: 0.4s;

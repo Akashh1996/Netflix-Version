@@ -1,22 +1,43 @@
 .movie-card{
     position: relative;
-}
-
-.movie-card:hover + div{
     display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
-.favorite-container{
+.movie-card:hover > button {
+    display: block;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.733);
+
+}
+
+.favorite-button:hover + img{
+    transform: scale(1.20);
+  transition: 0.4s;
+  opacity: 0.5;
+}
+
+.favorite-button{
     position: absolute;
-    display: none;
+    display: none  ;
     justify-content: center;
+    text-align: center;
     align-items: center;
-    bottom: -1px;
-    left: 5px;
+    color: cadetblue;
     background-color: rgba(0, 0, 0, 0.452);
-    width: 94%;
-    height: 50px;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+}
+
+.favorite-button:hover {
+    transform: scale(1.20);
+  transition: 0.4s;
 }
 

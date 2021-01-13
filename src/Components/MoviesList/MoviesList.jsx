@@ -19,10 +19,9 @@ function MoviesListComponent({ movies, allMovies }) {
               movieList.poster_path !== null
               && (
               <>
+                <button type="button" className="favorite-button">+</button>
                 <img className="movie-photo" src={`https://image.tmdb.org/t/p/w500/${movieList.poster_path}`} alt={movieList.original_title} />
-                <div className="favorite-container">
-                  <button type="button" className="favorite-button">+</button>
-                </div>
+
               </>
               )
             }
