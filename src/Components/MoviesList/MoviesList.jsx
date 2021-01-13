@@ -9,7 +9,7 @@ function MoviesListComponent({ movies, allMovies }) {
   return (
     <div id={movies}>
       <div className="now-playing" id="now-playing">
-        <p>{movies}</p>
+        <p className="movie-category">{movies}</p>
       </div>
       <ul className="image-wrapper">
         {

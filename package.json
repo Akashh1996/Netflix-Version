@@ -19,6 +19,7 @@
     "react-scripts": "4.0.1",
     "react-scroll": "^1.8.1",
     "redux": "^4.0.5",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
     "thunk": "0.0.1",
     "web-vitals": "^0.2.4"
