@@ -5,7 +5,7 @@ import actionTypes from './actionTypes';
 
 const endpoint = 'https://api.themoviedb.org/3/movie/now_playing?api_key=a855a03716794c53b1334d5e9754e04a&language=en-US&page=1&region=US';
 const endpoint1 = 'https://api.themoviedb.org/3/movie/popular?api_key=a855a03716794c53b1334d5e9754e04a&language=en-US&page=1';
-const endpoint3 = 'https://api.themoviedb.org/3/movie/upcoming?api_key=a855a03716794c53b1334d5e9754e04a&language=en-US&page=1&region=US';
+const endpoint2 = 'https://api.themoviedb.org/3/movie/upcoming?api_key=a855a03716794c53b1334d5e9754e04a&language=en-US&page=1&region=US';
 
 export function loadBYSearchSuccess(moviesList) {
   return {
@@ -60,12 +60,12 @@ export function loadMovies() {
     try {
       const upComing = await axios.get(endpoint);
       const popular = await axios.get(endpoint1);
-      const nowPlaying = await axios.get(endpoint3);
+      const nowPlaying = await axios.get(endpoint2);
 
       const allMovies = {
-        upComing: upComing.data.results,
-        popular: popular.data.results,
-        nowPlaying: nowPlaying.data.results,
+        UpComing: upComing.data.results,
+        Popular: popular.data.results,
+        NowPlaying: nowPlaying.data.results,
       };
 
       const categories = Object.keys(allMovies);
