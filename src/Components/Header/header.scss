@@ -36,8 +36,12 @@ header{
 .nav-item__home{
     margin-left: 30px;
 }
-.nav-item__latest, .nav-item__myList{
+.nav-item__category, .nav-item__myList{
     margin-left: 10px;
+}
+.nav-item__category a{
+    margin-left: 10px;
+    cursor: pointer;
 }
 a:hover{
     color: rgba(255,255,255,0.75);
@@ -68,13 +72,16 @@ input{
     padding-left: 7px;
 }
 @media only screen and (max-width: 600px) {
-    .nav-item__home, .nav-item__latest{
-        display: none;
-    }
+    
     input{
         padding: 0;
     }
     .nav-items{
         padding: 13px 13px;
+    }
+}
+@media only screen and (max-width: 750px) {
+    .nav-item__home, .nav-item__category{
+        display: none;
     }
 }
