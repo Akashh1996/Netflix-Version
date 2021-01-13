@@ -63,9 +63,9 @@ export function loadMovies() {
       const nowPlaying = await axios.get(endpoint2);
 
       const allMovies = {
-        UpComing: upComing.data.results,
+        'Up Comming': upComing.data.results,
         Popular: popular.data.results,
-        NowPlaying: nowPlaying.data.results,
+        'Now Playing': nowPlaying.data.results,
       };
 
       const categories = Object.keys(allMovies);
