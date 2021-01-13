@@ -1,12 +1,18 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
+import { Link as ScrollLink } from 'react-scroll';
 import { loadBySearch, saveQuery } from '../../redux/actions/movieAction';
 import './header.scss';
 
-function Header({ dispatch }) {
+const categoryNames = ['Up comming', 'Top', 'Latest'];
+const catergoryID = ['UpComing', 'Popular', 'NowPlaying'];
+
+function Header({ dispatch, categories }) {
   const history = useHistory();
 
   const [query, setQuery] = useState('');
@@ -43,7 +49,7 @@ function Header({ dispatch }) {
   return (
     <header>
 
-      <nav className={`nav ${show && 'nav__black'}`}>
+      <nav className={`nav ${show && 'nav__black'}`} id="nav">
         <div className="nav-items">
           <div className="nav-items-left">
             <div className="nav-logo">
@@ -56,8 +62,20 @@ function Header({ dispatch }) {
               <Link to="/">Home</Link>
               {' '}
             </div>
-            <div className="nav-item__latest">
-              <Link to="/latest">Latest</Link>
+            <div className="nav-item__category">
+              {categoryNames.map((category, index) => (
+                <ScrollLink
+                  activeClass="active"
+                  to={catergoryID[index]}
+                  spy
+                  smooth
+                  offset={-70}
+                  duration={500}
+                  key={category}
+                >
+                  {category}
+                </ScrollLink>
+              ))}
             </div>
           </div>
           <div className="nav-items-right">
@@ -100,6 +118,10 @@ function Header({ dispatch }) {
 
 Header.propTypes = {
   dispatch: PropTypes.func.isRequired,
-
 };
-export default connect()(Header);
+function mapStateToProps(state) {
+  return {
+    categories: state.movieReducer.categories,
+  };
+}
+export default connect(mapStateToProps)(Header);

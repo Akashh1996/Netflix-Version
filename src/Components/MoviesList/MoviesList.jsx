@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 function MoviesListComponent({ movies, allMovies }) {
   const [moviesCategories] = useState(allMovies[movies]);
   return (
-    <>
-      <div className="now-playing">
-        <p id={movies}>{movies.toUpperCase()}</p>
+    <div id={movies}>
+      <div className="now-playing" id="now-playing">
+        <p>{movies.match(/[A-Z][a-z]+|[0-9]+/g).join(' ')}</p>
       </div>
       <ul className="image-wrapper">
         {
@@ -23,7 +23,7 @@ function MoviesListComponent({ movies, allMovies }) {
       }
 
       </ul>
-    </>
+    </div>
   );
 }
 
