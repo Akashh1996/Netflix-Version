@@ -9,10 +9,9 @@ import { Link as ScrollLink } from 'react-scroll';
 import { loadBySearch, saveQuery } from '../../redux/actions/movieAction';
 import './header.scss';
 
-const categoryNames = ['Up comming', 'Top', 'Latest'];
-const catergoryID = ['UpComing', 'Popular', 'NowPlaying'];
+const categoryNames = ['Up Comming', 'Popular', 'Now Playing'];
 
-function Header({ dispatch, categories }) {
+function Header({ dispatch }) {
   const history = useHistory();
 
   const [query, setQuery] = useState('');
@@ -66,7 +65,7 @@ function Header({ dispatch, categories }) {
               {categoryNames.map((category, index) => (
                 <ScrollLink
                   activeClass="active"
-                  to={catergoryID[index]}
+                  to={category}
                   spy
                   smooth
                   offset={-70}
@@ -119,9 +118,5 @@ function Header({ dispatch, categories }) {
 Header.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
-function mapStateToProps(state) {
-  return {
-    categories: state.movieReducer.categories,
-  };
-}
-export default connect(mapStateToProps)(Header);
+
+export default connect()(Header);

@@ -9,7 +9,7 @@ function MoviesListComponent({ movies, allMovies }) {
   return (
     <div id={movies}>
       <div className="now-playing" id="now-playing">
-        <p>{movies.match(/[A-Z][a-z]+|[0-9]+/g).join(' ')}</p>
+        <p>{movies}</p>
       </div>
       <ul className="image-wrapper">
         {
