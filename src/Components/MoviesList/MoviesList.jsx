@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import './MoviesList.scss';
 
 function MoviesListComponent({ movies, allMovies }) {
   const [moviesCategories] = useState(allMovies[movies]);
@@ -13,10 +14,16 @@ function MoviesListComponent({ movies, allMovies }) {
       <ul className="image-wrapper">
         {
           moviesCategories && moviesCategories.map((movieList) => (
-            <li key={movieList.id}>
+            <li key={movieList.id} className="movie-card">
               {
               movieList.poster_path !== null
-              && <img src={`https://image.tmdb.org/t/p/w500/${movieList.poster_path}`} alt={movieList.original_title} />
+              && (
+              <>
+                <button type="button" className="favorite-button">+</button>
+                <img className="movie-photo" src={`https://image.tmdb.org/t/p/w500/${movieList.poster_path}`} alt={movieList.original_title} />
+
+              </>
+              )
             }
             </li>
           ))
