@@ -1,0 +1,22 @@
+.movie-card{
+    position: relative;
+}
+
+.movie-card:hover + div{
+    display: flex;
+}
+
+.favorite-container{
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    bottom: -1px;
+    left: 5px;
+    background-color: rgba(0, 0, 0, 0.452);
+    width: 94%;
+    height: 50px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
