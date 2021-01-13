@@ -31,10 +31,6 @@ describe('Given The Home Component', () => {
     jest.restoreAllMocks();
     wrapper = null;
   });
-  afterEach(() => {
-    jest.restoreAllMocks();
-    wrapper = null;
-  });
   describe('When all movies is loaded in the state', () => {
     beforeEach(() => {
       initialState = {
