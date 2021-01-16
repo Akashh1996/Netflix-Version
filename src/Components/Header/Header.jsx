@@ -6,7 +6,7 @@ import { useHistory, Link } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import { Link as ScrollLink } from 'react-scroll';
-import { loadBySearch, saveQuery } from '../../redux/actions/movieAction';
+import { loadBySearch } from '../../redux/actions/movieAction';
 import './header.scss';
 
 const categoryNames = ['Up Comming', 'Popular', 'Now Playing'];
@@ -17,9 +17,7 @@ function Header({ dispatch }) {
   const [query, setQuery] = useState('');
   const handleOnChange = (event) => {
     setQuery(event.target.value);
-    if (query.length > 0) {
-      dispatch(loadBySearch(query));
-    }
+    dispatch(loadBySearch(query));
   };
 
   useEffect(() => {
@@ -27,10 +25,6 @@ function Header({ dispatch }) {
       return history.push(`/search?q=${query}`);
     }
     return history.push(history.push('/'));
-  }, [query]);
-
-  useEffect(() => {
-    dispatch(saveQuery(query));
   }, [query]);
 
   const [show, handleShow] = useState(false);
@@ -53,7 +47,7 @@ function Header({ dispatch }) {
           <div className="nav-items-left">
             <div className="nav-logo">
               <Link to="/">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="logo" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="logo" id="logo" />
               </Link>
             </div>
             <div className="nav-item__home">
@@ -88,7 +82,7 @@ function Header({ dispatch }) {
                 <input
                   type="text"
                   name=""
-                  id=""
+                  id="input_search"
                   placeholder="Search"
                   className="search-input"
                   value={query}

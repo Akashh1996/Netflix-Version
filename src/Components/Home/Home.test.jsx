@@ -12,7 +12,6 @@ jest.mock('../../redux/actions/movieAction');
 describe('Given The Home Component', () => {
   let wrapper = null;
   let store = null;
-  let initialState;
 
   const wrapperFactory = (wrapperInitialState) => {
     store = configureStore(wrapperInitialState);
@@ -31,7 +30,10 @@ describe('Given The Home Component', () => {
     jest.restoreAllMocks();
     wrapper = null;
   });
+
   describe('When all movies is loaded in the state', () => {
+    let initialState;
+
     beforeEach(() => {
       initialState = {
         movieReducer: {
@@ -61,14 +63,13 @@ describe('Given The Home Component', () => {
   });
 
   describe('When all movies is not loaded', () => {
-    beforeEach(() => {
+    let initialState;
+    test('Then the component should call the loadMovie function ', () => {
       initialState = {
         movieReducer: {
           allMovies: null,
         },
       };
-    });
-    test('Then the component should call the loadMovie function ', () => {
       wrapper = wrapperFactory(initialState);
 
       render(<Home />, { wrapper });
