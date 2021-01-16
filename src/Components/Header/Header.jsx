@@ -17,9 +17,7 @@ function Header({ dispatch }) {
   const [query, setQuery] = useState('');
   const handleOnChange = (event) => {
     setQuery(event.target.value);
-    if (query.length > 0) {
-      dispatch(loadBySearch(query));
-    }
+    dispatch(loadBySearch(query));
   };
 
   useEffect(() => {
@@ -84,7 +82,7 @@ function Header({ dispatch }) {
                 <input
                   type="text"
                   name=""
-                  id=""
+                  id="input_search"
                   placeholder="Search"
                   className="search-input"
                   value={query}
