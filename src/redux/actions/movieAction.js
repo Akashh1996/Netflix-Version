@@ -32,13 +32,6 @@ export function loadBySearch(name) {
   };
 }
 
-export function saveQuery(query) {
-  return {
-    type: actionTypes.SAVE_QUERY,
-    query,
-  };
-}
-
 function loadMoviesError(error) {
   return {
     type: actionTypes.LOAD_MOVIES_ERROR,

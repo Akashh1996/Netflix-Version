@@ -6,7 +6,7 @@ import { useHistory, Link } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import { Link as ScrollLink } from 'react-scroll';
-import { loadBySearch, saveQuery } from '../../redux/actions/movieAction';
+import { loadBySearch } from '../../redux/actions/movieAction';
 import './header.scss';
 
 const categoryNames = ['Up Comming', 'Popular', 'Now Playing'];
@@ -27,10 +27,6 @@ function Header({ dispatch }) {
       return history.push(`/search?q=${query}`);
     }
     return history.push(history.push('/'));
-  }, [query]);
-
-  useEffect(() => {
-    dispatch(saveQuery(query));
   }, [query]);
 
   const [show, handleShow] = useState(false);

@@ -18,11 +18,6 @@ export default function movieReducer(state = initialState, action) {
         ...state,
         moviesList: action.moviesList,
       };
-    case actionTypes.SAVE_QUERY:
-      return {
-        ...state,
-        query: action.query,
-      };
     default:
       return state;
   }
