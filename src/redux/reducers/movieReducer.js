@@ -19,6 +19,7 @@ export default function movieReducer(state = initialState, action) {
         moviesList: action.moviesList,
       };
     case actionTypes.LOAD_SIMILAR:
+      debugger;
       return {
         ...state,
         similar: action.similar,

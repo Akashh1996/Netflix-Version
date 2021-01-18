@@ -107,7 +107,7 @@ export function getSimilarMovie(id) {
   return async (dispatch) => {
     debugger;
     try {
-      const { data: { results } } = axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`);
+      const { data: { results } } = axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=a855a03716794c53b1334d5e9754e04a&language=en-US&page=1`);
       dispatch(getSimilarMovieSuccess(results));
     } catch (error) {
       dispatch(getSimilarMovieError(error));
