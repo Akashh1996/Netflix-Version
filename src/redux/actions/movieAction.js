@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-expressions */
 /* eslint-disable no-debugger */
+/* eslint-disable no-unused-expressions */
 import axios from 'axios';
 import actionTypes from './actionTypes';
 
@@ -24,10 +24,35 @@ export function loadBYSearchError(error) {
 export function loadBySearch(name) {
   return async (dispatch) => {
     try {
-      const { data: { results } } = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=a855a03716794c53b1334d5e9754e04a&language=en-US&query=${name}&page=1&include_adult=false`);
+      const { data: { results } } = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=a855a03716794c53b1334d5e9754e04a&language=en-US&query=${name}&page=1&include_adult=false&region=US`);
       dispatch(loadBYSearchSuccess(results));
     } catch (error) {
       dispatch(loadBYSearchError);
+    }
+  };
+}
+
+export function similarMovieSuccess(similar) {
+  return {
+    type: actionTypes.LOAD_SIMILAR,
+    similar,
+  };
+}
+
+export function similarMovieError(error) {
+  return {
+    type: actionTypes.LOAD_SIMILAR_ERROR,
+    error,
+  };
+}
+
+export function getSimilarMovie(id) {
+  return async (dispatch) => {
+    try {
+      const { data: { results } } = await axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=a855a03716794c53b1334d5e9754e04a&language=en-US&page=1`);
+      dispatch(similarMovieSuccess(results));
+    } catch (error) {
+      dispatch(similarMovieError(error));
     }
   };
 }
@@ -49,7 +74,6 @@ function loadMoviesSucces(allMovies, categories) {
 
 export function loadMovies() {
   return async (dispatch) => {
-    debugger;
     try {
       const upComing = await axios.get(endpoint);
       const popular = await axios.get(endpoint1);

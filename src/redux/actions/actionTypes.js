@@ -4,7 +4,8 @@ const actionTypes = {
   SAVE_QUERY: 'SAVE_QUERY',
   LOAD_MOVIES_ERROR: 'LOAD_MOVIES_ERROR',
   LOAD_MOVIES: 'LOAD_MOVIES',
-
+  LOAD_SIMILAR: 'LOAD_SIMILAR',
+  LOAD_SIMILAR_ERROR: 'LOAD_SIMILAR_ERROR',
 };
 
 export default actionTypes;

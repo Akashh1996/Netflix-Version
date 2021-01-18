@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
@@ -111,6 +112,7 @@ function Header({ dispatch }) {
 
 Header.propTypes = {
   dispatch: PropTypes.func.isRequired,
+
 };
 
 export default connect()(Header);
