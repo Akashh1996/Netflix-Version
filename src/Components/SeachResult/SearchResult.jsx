@@ -5,12 +5,12 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import './search-result.scss';
 
-function SearchResult({ movieList, query }) {
+function SearchResult({ movieList }) {
   return (
 
     <div>
       <div className="image-container">
-        {movieList && query
+        {movieList
             && movieList.length > 0
             && movieList.map((movies) => (
               <>
