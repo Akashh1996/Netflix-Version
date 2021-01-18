@@ -12,18 +12,13 @@ function SearchResult({
 
   let id;
 
-  console.log(movieList);
-
   if (movieList && movieList[0]?.id) {
     id = movieList[0].id;
   }
-  console.log(id);
 
   useEffect(() => {
     dispatch(getSimilarMovie(id));
   }, [id, query]);
-
-  console.log(similar);
 
   return (
     <section className="search-result">
