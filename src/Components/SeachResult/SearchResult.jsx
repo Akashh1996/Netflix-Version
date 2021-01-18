@@ -6,7 +6,7 @@ import './search-result.scss';
 import { getSimilarMovie } from '../../redux/actions/movieAction';
 
 function SearchResult({
-  movieList, location: { search }, similar, dispatch,
+  movieList, location: { search }, similar, dispatch, similarMovieError,
 }) {
   const query = search.split('=')[1];
 
@@ -68,6 +68,9 @@ function SearchResult({
         ))}
       </ul>
 
+      {similarMovieError
+      && <h1>Error similar</h1>}
+
     </section>
 
   );
@@ -78,6 +81,7 @@ function mapStateToProps(state) {
     movieList: state.movieReducer.moviesList,
     query: state.movieReducer.query,
     similar: state.movieReducer.similar,
+    similarMovieError: state.movieReducer.similarMovieError,
   };
 }
 
