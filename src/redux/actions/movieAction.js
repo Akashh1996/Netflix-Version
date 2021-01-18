@@ -9,6 +9,7 @@ const upComingURL = `${endpoint}/movie/upcoming`;
 const popularURL = `${endpoint}/movie/popular`;
 const nowPlayingURL = `${endpoint}/movie/now_playing`;
 const searchURL = `${endpoint}/search/movie`;
+const similarMovieURL = `${endpoint}/movie`;
 
 const params = {
   api_key: API_KEY,
@@ -107,7 +108,9 @@ export function getSimilarMovie(id) {
   return async (dispatch) => {
     debugger;
     try {
-      const { data: { results } } = axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=a855a03716794c53b1334d5e9754e04a&language=en-US&page=1`);
+      const { data: { results } } = await axios.get(`${similarMovieURL}/${id}/similar`, {
+        params,
+      });
       dispatch(getSimilarMovieSuccess(results));
     } catch (error) {
       dispatch(getSimilarMovieError(error));
