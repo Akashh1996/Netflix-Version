@@ -17,6 +17,7 @@ function SearchResult({
   }
 
   useEffect(() => {
+    debugger;
     dispatch(getSimilarMovie(id));
   }, [id, query]);
 
