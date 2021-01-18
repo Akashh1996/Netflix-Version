@@ -35,8 +35,8 @@ describe('Given The Header Component', () => {
     jest.restoreAllMocks();
   });
 
-  describe('When there is a input value in the sarch bar', () => {
-    test('Then the loadBySearch function should be dispatched', () => {
+  describe('When there is an input value in the search bar', () => {
+    test('Then the loadBySearch function should be called', () => {
       const event = {
         preventDefault() {},
         target: {
