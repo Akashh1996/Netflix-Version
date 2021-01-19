@@ -51,6 +51,27 @@ describe('Given The Header Component', () => {
     });
   });
 
+  describe('When there isn`t an input value in the search bar', () => {
+    test('Then the loadBySearch function shouldn`t be called', () => {
+      const event = {
+        preventDefault() {},
+        target: {
+          value: '',
+        },
+      };
+
+      wrapper = wrapperFactory();
+
+      render(<Header />, { wrapper });
+
+      const inputsElements = document.querySelector('#input_search');
+
+      fireEvent.change(inputsElements, event);
+
+      expect(loadBySearch).not.toHaveBeenCalled();
+    });
+  });
+
   describe('When window scrollY is > 10', () => {
     test('Then class nav__black should exist in the document', () => {
       wrapper = wrapperFactory();

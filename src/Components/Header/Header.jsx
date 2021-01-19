@@ -10,27 +10,19 @@ import { Link as ScrollLink } from 'react-scroll';
 import { loadBySearch } from '../../redux/actions/movieAction';
 import './header.scss';
 
-const categoryNames = ['Up Comming', 'Popular', 'Now Playing'];
-
 function Header({ dispatch }) {
+  const categoryNames = ['Up Comming', 'Popular', 'Now Playing'];
   const history = useHistory();
-
+  const [show, handleShow] = useState(false);
   const [query, setQuery] = useState('');
+
   const handleOnChange = (event) => {
-    setQuery(event.target.value);
-    if (query.length > 0) {
+    const eventValue = event.target.value;
+    setQuery(eventValue);
+    if (eventValue.length > 0) {
       dispatch(loadBySearch(query));
     }
   };
-
-  useEffect(() => {
-    if (query?.length > 0) {
-      return history.push(`/search?q=${query}`);
-    }
-    return history.push(history.push('/'));
-  }, [query]);
-
-  const [show, handleShow] = useState(false);
 
   function handleScroll() {
     if (window.scrollY > 10) {
@@ -39,6 +31,13 @@ function Header({ dispatch }) {
       handleShow(false);
     }
   }
+
+  useEffect(() => {
+    if (query?.length > 0) {
+      return history.push(`/search?q=${query}`);
+    }
+    return history.push(history.push('/'));
+  }, [query]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
