@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import './MoviesList.scss';
 
 function MoviesListComponent({ movies, allMovies }) {
@@ -19,7 +20,9 @@ function MoviesListComponent({ movies, allMovies }) {
               movieList.poster_path !== null
               && (
               <>
-                <button type="button" className="favorite-button">+</button>
+                <button type="button" className="favorite-button">
+                  <FavoriteIcon />
+                </button>
                 <img className="movie-photo" src={`https://image.tmdb.org/t/p/w500/${movieList.poster_path}`} alt={movieList.original_title} />
 
               </>
