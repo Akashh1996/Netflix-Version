@@ -18,7 +18,9 @@ function Header({ dispatch }) {
   const [query, setQuery] = useState('');
   const handleOnChange = (event) => {
     setQuery(event.target.value);
-    dispatch(loadBySearch(query));
+    if (query.length > 0) {
+      dispatch(loadBySearch(query));
+    }
   };
 
   useEffect(() => {
@@ -30,14 +32,19 @@ function Header({ dispatch }) {
 
   const [show, handleShow] = useState(false);
 
+  function handleScroll() {
+    if (window.scrollY > 10) {
+      handleShow(true);
+    } else {
+      handleShow(false);
+    }
+  }
+
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) {
-        handleShow(true);
-      } else {
-        handleShow(false);
-      }
-    });
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (

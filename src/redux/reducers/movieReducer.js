@@ -1,6 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-debugger */
 import actionTypes from '../actions/actionTypes';
 
 const initialState = {};
@@ -13,15 +10,31 @@ export default function movieReducer(state = initialState, action) {
         allMovies: action.allMovies,
         categories: action.categories,
       };
+    case actionTypes.LOAD_MOVIES_ERROR:
+      return {
+        ...state,
+        allMovies: action.allMovies,
+        allMovieError: action.error,
+      };
     case actionTypes.LOAD_MOVIE_BY_SEARCH:
       return {
         ...state,
         moviesList: action.moviesList,
       };
+    case actionTypes.LOAD_MOVIE_BY_SEARCH_ERROR:
+      return {
+        ...state,
+        searchError: action.error,
+      };
     case actionTypes.LOAD_SIMILAR:
       return {
         ...state,
         similar: action.similar,
+      };
+    case actionTypes.LOAD_SIMILAR_ERROR:
+      return {
+        ...state,
+        similarMovieError: action.error,
       };
     default:
       return state;

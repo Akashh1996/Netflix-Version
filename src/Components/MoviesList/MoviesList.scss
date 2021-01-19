@@ -6,12 +6,7 @@
     height: 100%;
 }
 
-.movie-card:hover > button {
-    display: block;
-    z-index: 999;
-    background-color: rgba(0, 0, 0, 0.733);
 
-}
 
 .favorite-button:hover + img{
     transform: scale(1.20);
@@ -21,11 +16,9 @@
 
 .favorite-button{
     position: absolute;
-    display: none  ;
-    justify-content: center;
     text-align: center;
-    align-items: center;
-    color: cadetblue;
+    color: red;
+    visibility: hidden;
     background-color: rgba(0, 0, 0, 0.452);
     width: 30px;
     height: 30px;
@@ -34,10 +27,22 @@
     font-weight: 700;
     outline: none;
     cursor: pointer;
+    padding: 3px;
+    border: 0;
+    top: 89%;
+    left: 0%;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+
 }
 
-.favorite-button:hover {
-    transform: scale(1.20);
-    transition: 0.4s;
-}
+.movie-card:hover >  .favorite-button{
+    display: block;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.733);
+    transform: scale(1.2);
+    visibility: visible;
+    opacity: 1;
 
+}
