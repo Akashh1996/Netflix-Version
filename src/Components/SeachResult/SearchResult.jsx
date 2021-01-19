@@ -12,17 +12,19 @@ function SearchResult({
 
   let id;
 
-  if (movieList && movieList[0]?.id) {
+  if (movieList && movieList[0]?.id !== undefined) {
     id = movieList[0].id;
   }
 
   useEffect(() => {
-    debugger;
-    dispatch(getSimilarMovie(id));
+    if (id !== undefined) {
+      dispatch(getSimilarMovie(id));
+    }
   }, [id, query]);
 
   return (
     <section className="search-result">
+
       <p className="search-result__query">
         Explore title related to:
         {' '}
@@ -70,7 +72,6 @@ function SearchResult({
 
       {similarMovieError
       && <h1>Error similar</h1>}
-
     </section>
 
   );

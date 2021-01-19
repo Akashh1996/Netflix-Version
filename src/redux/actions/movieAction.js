@@ -106,7 +106,6 @@ function getSimilarMovieError(error) {
 
 export function getSimilarMovie(id) {
   return async (dispatch) => {
-    debugger;
     try {
       const { data: { results } } = await axios.get(`${similarMovieURL}/${id}/similar`, {
         params,
