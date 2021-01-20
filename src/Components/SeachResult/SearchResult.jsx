@@ -1,9 +1,8 @@
-/* eslint-disable no-debugger */
-/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import './search-result.scss';
 import { getSimilarMovie } from '../../redux/actions/movieAction';
+import SearchCommon from './SearchCommon';
 
 function SearchResult({
   movieList, location: { search }, similar, dispatch, similarMovieError,
@@ -24,51 +23,19 @@ function SearchResult({
 
   return (
     <section className="search-result">
-
       <p className="search-result__query">
         Explore title related to:
         {' '}
         <span className="query">{query}</span>
       </p>
-      <ul className="image-wrapper">
-        {movieList && movieList.length > 0 ? movieList.slice(0, 5).map((movie) => (
-          <li key={movie.id} className="movie-card">
-            {
-            movie.poster_path !== null
-            && (
-            <>
-              <button type="button" className="favorite-button">+</button>
-              <img className="movie-photo" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movieList.original_title} />
-
-            </>
-            )
-          }
-          </li>
-        )) : (
-          <h2 style={{ marginLeft: '7px', marginTop: '40px' }}>There is no such movie. Please type correctly.</h2>
-        )}
-      </ul>
+      <SearchCommon movies={movieList} />
 
       <p className="search-result__query">
         Similar movies
       </p>
-      <ul className="image-wrapper">
-        {id && similar
-         && similar.length > 0 && similar.slice(0, 9).map((movie) => (
-           <li key={movie.id} className="movie-card">
-             {
-            movie.poster_path !== null
-            && (
-            <>
-              <button type="button" className="favorite-button">+</button>
-              <img className="movie-photo" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movieList.original_title} />
 
-            </>
-            )
-          }
-           </li>
-        ))}
-      </ul>
+      {movieList && similar
+      && <SearchCommon movies={similar} />}
 
       {similarMovieError
       && <h1>Error similar</h1>}
