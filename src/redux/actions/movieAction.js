@@ -45,8 +45,8 @@ export function loadBySearch(name) {
         },
       });
       dispatch(loadBYSearchSuccess(results));
-    } catch (error) {
-      dispatch(loadBYSearchError);
+    } catch ({ message }) {
+      dispatch(loadBYSearchError(message));
     }
   };
 }
@@ -84,8 +84,8 @@ export function loadMovies() {
       };
       const categories = Object.keys(allMovies);
       dispatch(loadMoviesSucces(allMovies, categories));
-    } catch (error) {
-      dispatch(loadMoviesError(error));
+    } catch ({ message }) {
+      dispatch(loadMoviesError(message));
     }
   };
 }
@@ -111,8 +111,8 @@ export function getSimilarMovie(id) {
         params,
       });
       dispatch(getSimilarMovieSuccess(results));
-    } catch (error) {
-      dispatch(getSimilarMovieError(error));
+    } catch ({ message }) {
+      dispatch(getSimilarMovieError(message));
     }
   };
 }
