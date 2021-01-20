@@ -28,14 +28,15 @@ function SearchResult({
         {' '}
         <span className="query">{query}</span>
       </p>
-      <SearchCommon movies={movieList} />
+      {movieList.length > 0
+        ? <SearchCommon movies={movieList} /> : <h1>NO hay resultado</h1>}
 
       <p className="search-result__query">
         Similar movies
       </p>
 
-      {movieList && similar
-      && <SearchCommon movies={similar} />}
+      {movieList?.length > 0 && similar?.length > 0
+        ? <SearchCommon movies={similar} /> : <h1>No hay</h1> }
 
       {similarMovieError
       && <h1>Error similar</h1>}
