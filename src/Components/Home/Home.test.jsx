@@ -33,7 +33,6 @@ describe('Given The Home Component', () => {
 
   describe('When all movies is loaded in the state', () => {
     let initialState;
-
     beforeEach(() => {
       initialState = {
         movieReducer: {

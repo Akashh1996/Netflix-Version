@@ -1,21 +1,24 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import './search-result.scss';
+import { useLocation } from 'react-router-dom';
 import { getSimilarMovie } from '../../redux/actions/movieAction';
 import SearchCommon from './SearchCommon';
 
 function SearchResult({
-  movieList, location: { search }, similar, dispatch, similarMovieError,
+  searchMovieResult, similarMovie, dispatch, similarMovieError,
 }) {
-  const query = search.split('=')[1];
+  const msearch = useLocation().search;
+
+  const query = msearch.split('=')[1];
   let id;
 
-  if (movieList && movieList[0]?.id !== undefined) {
-    id = movieList[0].id;
+  if (searchMovieResult?.length > 0) {
+    id = searchMovieResult[0]?.id;
   }
 
   useEffect(() => {
-    if (id && id !== undefined) {
+    if (id !== undefined) {
       dispatch(getSimilarMovie(id));
     }
   }, [id, query]);
@@ -27,15 +30,15 @@ function SearchResult({
         {' '}
         <span className="query">{query}</span>
       </p>
-      {movieList?.length > 0
-        ? <SearchCommon movies={movieList} /> : <h1 className="not-exist">There is no such movie. Try with other keyword</h1>}
+      {searchMovieResult?.length > 0
+        ? <SearchCommon movies={searchMovieResult} /> : <h1 className="not-exist">There is no such movie. Try with other keyword</h1>}
 
       <p className="search-result__query">
         Similar movies
       </p>
 
-      {movieList?.length && similar?.length > 0
-        ? <SearchCommon movies={similar} /> : (
+      {searchMovieResult?.length > 0 && similarMovie?.length > 0
+        ? <SearchCommon movies={similarMovie} /> : (
           <h1 className="not-exist">
             There is no similar movie realted to
             {' '}
@@ -44,7 +47,7 @@ function SearchResult({
         ) }
 
       {similarMovieError
-      && <h1>This search </h1>}
+      && <h1 className="similar-movie__error">similar movie error</h1>}
     </section>
 
   );
@@ -52,9 +55,9 @@ function SearchResult({
 
 function mapStateToProps(state) {
   return {
-    movieList: state.movieReducer.moviesList,
+    searchMovieResult: state.movieReducer.moviesList,
     query: state.movieReducer.query,
-    similar: state.movieReducer.similar,
+    similarMovie: state.movieReducer.similar,
     similarMovieError: state.movieReducer.similarMovieError,
   };
 }
