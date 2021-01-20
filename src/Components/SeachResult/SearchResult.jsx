@@ -8,7 +8,6 @@ function SearchResult({
   movieList, location: { search }, similar, dispatch, similarMovieError,
 }) {
   const query = search.split('=')[1];
-
   let id;
 
   if (movieList && movieList[0]?.id !== undefined) {
@@ -16,7 +15,7 @@ function SearchResult({
   }
 
   useEffect(() => {
-    if (id !== undefined) {
+    if (id && id !== undefined) {
       dispatch(getSimilarMovie(id));
     }
   }, [id, query]);
@@ -28,18 +27,24 @@ function SearchResult({
         {' '}
         <span className="query">{query}</span>
       </p>
-      {movieList.length > 0
-        ? <SearchCommon movies={movieList} /> : <h1>NO hay resultado</h1>}
+      {movieList?.length > 0
+        ? <SearchCommon movies={movieList} /> : <h1 className="not-exist">There is no such movie. Try with other keyword</h1>}
 
       <p className="search-result__query">
         Similar movies
       </p>
 
-      {movieList?.length > 0 && similar?.length > 0
-        ? <SearchCommon movies={similar} /> : <h1>No hay</h1> }
+      {movieList?.length && similar?.length > 0
+        ? <SearchCommon movies={similar} /> : (
+          <h1 className="not-exist">
+            There is no similar movie realted to
+            {' '}
+            {query}
+          </h1>
+        ) }
 
       {similarMovieError
-      && <h1>Error similar</h1>}
+      && <h1>This search </h1>}
     </section>
 
   );
