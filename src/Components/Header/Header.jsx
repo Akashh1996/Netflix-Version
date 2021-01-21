@@ -1,6 +1,3 @@
-/* eslint-disable no-debugger */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
@@ -63,7 +60,7 @@ function Header({ dispatch }) {
               {' '}
             </div>
             <div className="nav-item__category">
-              {categoryNames.map((category, index) => (
+              {categoryNames.map((category) => (
                 <ScrollLink
                   activeClass="active"
                   to={category}
