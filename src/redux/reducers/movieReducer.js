@@ -13,8 +13,7 @@ export default function movieReducer(state = initialState, action) {
     case actionTypes.LOAD_MOVIES_ERROR:
       return {
         ...state,
-        allMovies: action.allMovies,
-        allMovieError: action.error,
+        allMoviesError: action.error,
       };
     case actionTypes.LOAD_MOVIE_BY_SEARCH:
       return {
