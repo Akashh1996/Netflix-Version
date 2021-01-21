@@ -50,11 +50,11 @@ describe('Given movieActions', () => {
         const expectedAction = {
           type: actionTypes.LOAD_MOVIES,
           allMovies: {
-            'Up Comming': ['MovieOne', 'MovieTwo'],
+            'Up Coming': ['MovieOne', 'MovieTwo'],
             Popular: ['MovieOne', 'MovieTwo'],
             'Now Playing': ['MovieOne', 'MovieTwo'],
           },
-          categories: ['Up Comming', 'Popular', 'Now Playing'],
+          categories: ['Up Coming', 'Popular', 'Now Playing'],
         };
 
         await loadMovies()(dispatch);

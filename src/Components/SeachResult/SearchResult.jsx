@@ -1,19 +1,20 @@
-/* eslint-disable no-debugger */
-/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import './search-result.scss';
+import { useLocation } from 'react-router-dom';
 import { getSimilarMovie } from '../../redux/actions/movieAction';
+import SearchCommon from './SearchCommon';
 
 function SearchResult({
-  movieList, location: { search }, similar, dispatch, similarMovieError,
+  searchMovieResult, similarMovie, dispatch, similarMovieError,
 }) {
-  const query = search.split('=')[1];
+  const msearch = useLocation().search;
 
+  const query = msearch.split('=')[1];
   let id;
 
-  if (movieList && movieList[0]?.id !== undefined) {
-    id = movieList[0].id;
+  if (searchMovieResult?.length > 0) {
+    id = searchMovieResult[0]?.id;
   }
 
   useEffect(() => {
@@ -24,54 +25,29 @@ function SearchResult({
 
   return (
     <section className="search-result">
-
       <p className="search-result__query">
         Explore title related to:
         {' '}
         <span className="query">{query}</span>
       </p>
-      <ul className="image-wrapper">
-        {movieList && movieList.length > 0 ? movieList.slice(0, 5).map((movie) => (
-          <li key={movie.id} className="movie-card">
-            {
-            movie.poster_path !== null
-            && (
-            <>
-              <button type="button" className="favorite-button">+</button>
-              <img className="movie-photo" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movieList.original_title} />
-
-            </>
-            )
-          }
-          </li>
-        )) : (
-          <h2 style={{ marginLeft: '7px', marginTop: '40px' }}>There is no such movie. Please type correctly.</h2>
-        )}
-      </ul>
+      {searchMovieResult?.length > 0
+        ? <SearchCommon movies={searchMovieResult} /> : <h1 className="not-exist">There is no such movie. Try with other keyword</h1>}
 
       <p className="search-result__query">
         Similar movies
       </p>
-      <ul className="image-wrapper">
-        {id && similar
-         && similar.length > 0 && similar.slice(0, 9).map((movie) => (
-           <li key={movie.id} className="movie-card">
-             {
-            movie.poster_path !== null
-            && (
-            <>
-              <button type="button" className="favorite-button">+</button>
-              <img className="movie-photo" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movieList.original_title} />
 
-            </>
-            )
-          }
-           </li>
-        ))}
-      </ul>
+      {searchMovieResult?.length > 0 && similarMovie?.length > 0
+        ? <SearchCommon movies={similarMovie} /> : (
+          <h1 className="not-exist">
+            There is no similar movie realted to
+            {' '}
+            {query}
+          </h1>
+        ) }
 
       {similarMovieError
-      && <h1>Error similar</h1>}
+      && <h1 className="similar-movie__error">similar movie error</h1>}
     </section>
 
   );
@@ -79,9 +55,9 @@ function SearchResult({
 
 function mapStateToProps(state) {
   return {
-    movieList: state.movieReducer.moviesList,
+    searchMovieResult: state.movieReducer.moviesList,
     query: state.movieReducer.query,
-    similar: state.movieReducer.similar,
+    similarMovie: state.movieReducer.similar,
     similarMovieError: state.movieReducer.similarMovieError,
   };
 }

@@ -11,7 +11,7 @@ import { loadBySearch } from '../../redux/actions/movieAction';
 import './header.scss';
 
 function Header({ dispatch }) {
-  const categoryNames = ['Up Comming', 'Popular', 'Now Playing'];
+  const categoryNames = ['Up Coming', 'Popular', 'Now Playing'];
   const history = useHistory();
   const [show, handleShow] = useState(false);
   const [query, setQuery] = useState('');
@@ -20,7 +20,7 @@ function Header({ dispatch }) {
     const eventValue = event.target.value;
     setQuery(eventValue);
     if (eventValue.length > 0) {
-      dispatch(loadBySearch(query));
+      dispatch(loadBySearch(eventValue));
     }
   };
 

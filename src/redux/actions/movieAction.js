@@ -78,7 +78,7 @@ export function loadMovies() {
         params,
       });
       const allMovies = {
-        'Up Comming': upComing.data.results,
+        'Up Coming': upComing.data.results,
         Popular: popular.data.results,
         'Now Playing': nowPlaying.data.results,
       };
