@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-debugger */
 import axios from 'axios';
 import actionTypes from './actionTypes';
 
@@ -10,6 +8,7 @@ const popularURL = `${endpoint}/movie/popular`;
 const nowPlayingURL = `${endpoint}/movie/now_playing`;
 const searchURL = `${endpoint}/search/movie`;
 const similarMovieURL = `${endpoint}/movie`;
+const videoURL = `${endpoint}/movie`;
 
 const params = {
   api_key: API_KEY,
@@ -113,6 +112,36 @@ export function getSimilarMovie(id) {
       dispatch(getSimilarMovieSuccess(results));
     } catch ({ message }) {
       dispatch(getSimilarMovieError(message));
+    }
+  };
+}
+
+function loadVideoError(error) {
+  return {
+    type: actionTypes.LOAD_VIDEO_ERROR,
+    error,
+  };
+}
+
+function loadVideoSuccess(video) {
+  return {
+    type: actionTypes.LOAD_VIDEO,
+    video,
+  };
+}
+
+export function loadVideo(id) {
+  return async (dispatch) => {
+    try {
+      const { data: { results } } = await axios.get(`${videoURL}/${id}/videos`, {
+        params: {
+          api_key: API_KEY,
+          language: 'en_US',
+        },
+      });
+      dispatch(loadVideoSuccess(results));
+    } catch ({ message }) {
+      dispatch(loadVideoError(message));
     }
   };
 }
