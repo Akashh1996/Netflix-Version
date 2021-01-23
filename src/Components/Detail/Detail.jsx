@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ReactPlayer from 'react-player/youtube';
 import { loadVideo } from '../../redux/actions/movieAction';
 
 function Detail({ match: { params }, video, dispatch }) {
@@ -9,10 +10,15 @@ function Detail({ match: { params }, video, dispatch }) {
     dispatch(loadVideo(id));
   }
 
-  console.log(video);
-
   return (
-    <h1>This is detail</h1>
+    <div className="movie-trailer">
+      <ReactPlayer
+        url="https://www.youtube.com/watch?v=1Q8fG0TtVAY&t=14s&ab_channel=WarnerBros.Pictures"
+        width="100vw"
+        height="100vh"
+        pip="true"
+      />
+    </div>
   );
 }
 
