@@ -139,7 +139,7 @@ export function loadVideo(id) {
           language: 'en_US',
         },
       });
-      dispatch(loadVideoSuccess(results));
+      dispatch(loadVideoSuccess(results[0].key));
     } catch ({ message }) {
       dispatch(loadVideoError(message));
     }

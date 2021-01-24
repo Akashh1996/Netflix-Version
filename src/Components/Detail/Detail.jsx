@@ -1,56 +1,50 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import ReactPlayer from 'react-player';
 import { loadVideo } from '../../redux/actions/movieAction';
 
-function Detail({ match, video, dispatch }) {
-  const [id] = useState(match.params.id);
-
-  let [youtubeId] = useState('');
+function Detail({
+  match, video, dispatch,
+}) {
+  const { id } = match.params;
 
   useEffect(() => {
     dispatch(loadVideo(id));
-  }, []);
-
-  if (video?.length > 0) {
-    youtubeId = video[0].key;
-  }
+  }, [id, video]);
 
   useEffect(() => {
     window.scrollTo(10, 70);
-  }, []);
+  }, [id]);
 
   return (
-    <div
-      className="video"
-      style={{
-        position: 'relative',
-        paddingBottom: '56.25%' /* 16:9 */,
-        paddingTop: 25,
-        height: 0,
-        marginTop: '70px',
-        margin: '70px 40px 0px 40px',
-      }}
-    >
-      <iframe
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '80%',
-        }}
-        src={`https://www.youtube.com/embed/${youtubeId}`}
-        frameBorder="0"
-        allowFullScreen="allowfullscreen"
-      />
-    </div>
+    <>
+      {video?.length > 0
+        ? (
+          <div className="player-wrapper">
+            <ReactPlayer
+              className="react-player"
+              url={`https://www.youtube.com/watch?v=${video}`}
+              width="100%"
+              height="80%"
+              controls
+
+            />
+          </div>
+        ) : (
+          <h1>loading</h1>
+        )}
+    </>
+
   );
 }
 
 function mapStateToProps(state) {
   return {
     video: state.movieReducer.video,
+    allMovies: state.movieReducer.allMovies,
+
   };
 }
 export default connect(mapStateToProps)(Detail);
