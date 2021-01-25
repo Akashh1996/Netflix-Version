@@ -6,6 +6,7 @@ const actionTypes = {
   LOAD_MOVIES: 'LOAD_MOVIES',
   LOAD_SIMILAR: 'LOAD_SIMILAR',
   LOAD_SIMILAR_ERROR: 'LOAD_SIMILAR_ERROR',
+  SET_LOADING: 'SET_LOADING',
 };
 
 export default actionTypes;

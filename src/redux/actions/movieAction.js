@@ -18,6 +18,18 @@ const params = {
   region: 'US',
 };
 
+function setLoadingSuccess() {
+  return {
+    type: actionTypes.SET_LOADING,
+  };
+}
+
+export function setLoading() {
+  return (dispatch) => {
+    dispatch(setLoadingSuccess());
+  };
+}
+
 function loadBYSearchSuccess(moviesList) {
   return {
     type: actionTypes.LOAD_MOVIE_BY_SEARCH,
@@ -35,6 +47,7 @@ function loadBYSearchError(error) {
 export function loadBySearch(name) {
   return async (dispatch) => {
     try {
+      dispatch(setLoading());
       const { data: { results } } = await axios.get(searchURL, {
         params: {
           api_key: API_KEY,
@@ -68,6 +81,7 @@ function loadMoviesSucces(allMovies, categories) {
 export function loadMovies() {
   return async (dispatch) => {
     try {
+      dispatch(setLoading());
       const upComing = await axios.get(upComingURL, {
         params,
       });
@@ -107,6 +121,7 @@ function getSimilarMovieError(error) {
 export function getSimilarMovie(id) {
   return async (dispatch) => {
     try {
+      dispatch(setLoading());
       const { data: { results } } = await axios.get(`${similarMovieURL}/${id}/similar`, {
         params,
       });

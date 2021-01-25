@@ -5,11 +5,12 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import PropTypes from 'prop-types';
 import MoviesList from '../MoviesList/MoviesList';
 import { loadMovies } from '../../redux/actions/movieAction';
+import Loading from '../Loading/Loading';
 
 import './home.scss';
 
 function Home({
-  dispatch, allMovies, categories,
+  dispatch, allMovies, categories, loading,
 }) {
   useEffect(() => {
     if (!allMovies) {
@@ -47,7 +48,7 @@ function Home({
         </div>
       </div>
 
-      { categories?.length > 0 && categories.map((movies) => (
+      { loading ? <Loading /> : categories?.map((movies) => (
         <MoviesList key={movies} movies={movies} />
       ))}
 
@@ -68,6 +69,7 @@ function mapStateToProps(state) {
   return {
     allMovies: state.movieReducer.allMovies,
     categories: state.movieReducer.categories,
+    loading: state.movieReducer.loading,
   };
 }
 

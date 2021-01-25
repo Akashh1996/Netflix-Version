@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import Loading from '../Loading/Loading';
 
-function SearchCommon({ movies }) {
+function SearchCommon({ movies, loading }) {
   return (
     <div>
       <ul className="image-wrapper">
-        {
-        movies && movies.length > 0 && movies.map((movie) => (
+        {loading && <Loading />}
+        {!loading
+        && movies && movies.length > 0 && movies.map((movie) => (
           <li key={movie.id || Math.random() * Date.now()} className="movie-card">
             {
             movie.poster_path !== null
@@ -22,12 +24,17 @@ function SearchCommon({ movies }) {
             )
           }
           </li>
-        ))
-    }
+        ))}
 
       </ul>
     </div>
   );
 }
 
-export default connect()(SearchCommon);
+function mapStateToProps(state) {
+  return {
+    loading: state.movieReducer.loading,
+  };
+}
+
+export default connect(mapStateToProps)(SearchCommon);
