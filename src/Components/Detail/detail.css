@@ -62,6 +62,24 @@
     margin-bottom: 20px;
 }
 
+.player-wrapper {
+    position: relative;
+    padding-top: 50.25%;
+    color: black;
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .react-player {
+    position: absolute;
+    top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+
 @media only screen and (max-width: 800px) {
     .movie-detail{
         flex-wrap: wrap;
@@ -75,4 +93,34 @@
     .movie-detail-text{
         width: 100%;
     }
+  }
+@media only screen and (max-width: 1000px) {
+
+    .detail{
+        flex-wrap: wrap;
+    }
+    .casts{
+        flex-direction: row;
+        padding-left: 0;
+    }
+    .movie-detail{
+        padding: 0;
+        width: 100%;
+    }
+    .react-player{
+        width: 100% !important;
+        height:  100% !important;
+    }
+    .cast__image{
+        width: 70px;
+        height: auto;
+        margin-top: 20px;
+    }
+    .casts-info{
+        margin-right: 10px;
+        width: 70px;
+
+    }
+    
+ 
   }

@@ -68,10 +68,10 @@ function Detail({
               {video
               && (
               <ReactPlayer
-                className="react-player"
                 url={`https://www.youtube.com/watch?v=${video}`}
                 width="80%"
                 height="80%"
+                className="react-player"
                 controls
               />
               )}
