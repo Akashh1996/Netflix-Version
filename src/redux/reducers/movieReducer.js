@@ -9,6 +9,7 @@ export default function movieReducer(state = initialState, action) {
         ...state,
         allMovies: action.allMovies,
         categories: action.categories,
+        loading: false,
       };
     case actionTypes.LOAD_MOVIES_ERROR:
       return {
@@ -19,6 +20,7 @@ export default function movieReducer(state = initialState, action) {
       return {
         ...state,
         moviesList: action.moviesList,
+        loading: false,
       };
     case actionTypes.LOAD_MOVIE_BY_SEARCH_ERROR:
       return {
@@ -29,12 +31,20 @@ export default function movieReducer(state = initialState, action) {
       return {
         ...state,
         similar: action.similar,
+        loading: false,
       };
     case actionTypes.LOAD_SIMILAR_ERROR:
       return {
         ...state,
         similarMovieError: action.error,
       };
+
+    case actionTypes.SET_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+
     case actionTypes.LOAD_VIDEO:
       return {
         ...state,
