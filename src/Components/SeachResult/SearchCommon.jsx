@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Loading from '../Loading/Loading';
 
@@ -18,8 +19,9 @@ function SearchCommon({ movies, loading }) {
               <button type="button" className="favorite-button">
                 <FavoriteIcon />
               </button>
-              <img className="movie-photo" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title} />
-
+              <Link to={`/detail/${movie.id}`}>
+                <img className="movie-photo" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title} />
+              </Link>
             </>
             )
           }
