@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ReactPlayer from 'react-player';
 import StarIcon from '@material-ui/icons/Star';
 import { loadVideo, loadMovieDetail, loadMovieCast } from '../../redux/actions/movieAction';
-import './detail.css';
+import './detail.scss';
 
 function Detail({
   match, video, dispatch, movieDetail, cast,
