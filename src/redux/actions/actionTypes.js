@@ -13,6 +13,7 @@ const actionTypes = {
   LOAD_MOVIE_DETAIL_ERROR: 'LOAD_MOVIE_DETAIL_ERROR',
   LOAD_CAST: 'LOAD_CAST',
   LOAD_CAST_ERROR: 'LOAD_CAST_ERROR',
+  CLEAR_DETAIL: 'CLEAR_DETAIL',
 };
 
 export default actionTypes;

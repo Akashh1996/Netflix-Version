@@ -222,3 +222,15 @@ export function loadMovieCast(id) {
     }
   };
 }
+
+function clearDetailSucces() {
+  return {
+    type: actionTypes.CLEAR_DETAIL,
+  };
+}
+
+export function clearDetail() {
+  return (dispatch) => {
+    dispatch(clearDetailSucces());
+  };
+}
