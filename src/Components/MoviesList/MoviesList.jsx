@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import FavoriteIcon from '@material-ui/icons/Favorite';
