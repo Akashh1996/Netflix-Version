@@ -150,6 +150,7 @@ function loadVideoSuccess(video) {
 export function loadVideo(id) {
   return async (dispatch) => {
     try {
+      dispatch(setLoading);
       const { data: { results } } = await axios.get(`${videoURL}/${id}/videos`, {
         params: {
           api_key: API_KEY,
