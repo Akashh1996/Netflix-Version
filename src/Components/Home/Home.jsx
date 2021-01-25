@@ -4,16 +4,22 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import PropTypes from 'prop-types';
 import MoviesList from '../MoviesList/MoviesList';
-import { loadMovies } from '../../redux/actions/movieAction';
+import { loadMovies, clearDetail } from '../../redux/actions/movieAction';
 
 import './home.scss';
 
 function Home({
-  dispatch, allMovies, categories,
+  dispatch, allMovies, categories, video, movieDetail, cast,
 }) {
   useEffect(() => {
     if (!allMovies) {
       dispatch(loadMovies());
+    }
+  }, []);
+
+  useEffect(() => {
+    if (video || movieDetail || cast) {
+      dispatch(clearDetail());
     }
   }, []);
 
@@ -68,6 +74,9 @@ function mapStateToProps(state) {
   return {
     allMovies: state.movieReducer.allMovies,
     categories: state.movieReducer.categories,
+    video: state.movieReducer.video,
+    movieDetail: state.movieReducer.movieDetail,
+    cast: state.movieReducer.cast,
   };
 }
 

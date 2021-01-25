@@ -56,6 +56,15 @@ export default function movieReducer(state = initialState, action) {
         ...state,
         cast: action.cast,
       };
+
+    case actionTypes.CLEAR_DETAIL:
+      return {
+        ...state,
+        video: null,
+        movieDetail: null,
+        cast: null,
+      };
+
     default:
       return state;
   }
