@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import ReactPlayer from 'react-player';
 import StarIcon from '@material-ui/icons/Star';
 import { loadVideo, loadMovieDetail, loadMovieCast } from '../../redux/actions/movieAction';
+import Loading from '../Loading/Loading';
 import './detail.scss';
 
 function Detail({
-  match, video, dispatch, movieDetail, cast,
+  match, video, dispatch, movieDetail, cast, loading,
 }) {
   const { id } = match.params;
 
@@ -64,22 +65,25 @@ function Detail({
               </div>
             </div>
 
-            <div className="player-wrapper">
-              {video
+            {loading ? <Loading />
+              : (
+                <div className="player-wrapper">
+                  {video
               && (
               <ReactPlayer
                 url={`https://www.youtube.com/watch?v=${video}`}
-                width="80%"
-                height="80%"
                 className="react-player"
-                controls
+                playing="true"
+                width="100%"
+                height="100%"
               />
               )}
-            </div>
+                </div>
+              )}
           </div>
 
           <div className="casts">
-            {cast.cast.slice(0, 3).map((actor) => (
+            {cast.cast.slice(0, 4).map((actor) => (
               <div className="casts-info">
                 {actor.profile_path !== null
                     && (
@@ -106,6 +110,7 @@ function mapStateToProps(state) {
     allMovies: state.movieReducer.allMovies,
     movieDetail: state.movieReducer.movieDetail,
     cast: state.movieReducer.cast,
+    loading: state.movieReducer.loading,
 
   };
 }
