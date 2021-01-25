@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/iframe-has-title */
-// eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ReactPlayer from 'react-player';
 import StarIcon from '@material-ui/icons/Star';
@@ -14,31 +12,13 @@ function Detail({
 
   useEffect(() => {
     dispatch(loadVideo(id));
-  }, [dispatch, video]);
+    dispatch(loadMovieDetail(id));
+    dispatch(loadMovieCast(id));
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  useEffect(() => {
-    let isdetailReady = false;
-    if ((!movieDetail || movieDetail.id !== id) && !isdetailReady) {
-      dispatch(loadMovieDetail(id));
-    }
-    return () => {
-      isdetailReady = true;
-    };
-  }, [movieDetail?.original_title, dispatch]);
-
-  useEffect(() => {
-    let isCastReady = false;
-    if ((!cast || cast.id !== id) && !isCastReady) {
-      dispatch(loadMovieCast(id));
-    }
-    return () => {
-      isCastReady = true;
-    };
-  }, [id, dispatch]);
 
   function splitDate(date) {
     return date.split('-')[0];
