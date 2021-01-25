@@ -3,38 +3,110 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import ReactPlayer from 'react-player';
-import { loadVideo } from '../../redux/actions/movieAction';
+import StarIcon from '@material-ui/icons/Star';
+import { loadVideo, loadMovieDetail, loadMovieCast } from '../../redux/actions/movieAction';
+import './detail.css';
 
 function Detail({
-  match, video, dispatch,
+  match, video, dispatch, movieDetail, cast,
 }) {
   const { id } = match.params;
 
   useEffect(() => {
     dispatch(loadVideo(id));
-  }, [id, video]);
-
-  useEffect(() => {
-    window.scrollTo(10, 70);
   }, [id]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (!movieDetail || movieDetail.id !== id) {
+      dispatch(loadMovieDetail(id));
+    }
+  }, [id]);
+
+  useEffect(() => {
+    if (!cast || cast.id !== id) {
+      dispatch(loadMovieCast(id));
+    }
+  }, [id]);
+
+  function splitDate(date) {
+    return date.split('-')[0];
+  }
   return (
     <>
-      {video?.length > 0
-        ? (
-          <div className="player-wrapper">
-            <ReactPlayer
-              className="react-player"
-              url={`https://www.youtube.com/watch?v=${video}`}
-              width="100%"
-              height="80%"
-              controls
 
-            />
+      { movieDetail && cast
+        && (
+        <section className="detail">
+          <div className="movie-detail">
+            <div className="movie-detail-text">
+              <div className="movie-detail__title">
+                <h1>
+                  {movieDetail.original_title}
+                  {' '}
+                  <span className="movie__release-date">
+                    (
+                    {splitDate(movieDetail.release_date)}
+                    )
+                  </span>
+                  {' '}
+                </h1>
+                <span className="movie__star">
+                  <StarIcon />
+                  <span className="star">{movieDetail.vote_average}</span>
+                </span>
+              </div>
+              <div className="movie-detail__extra">
+                {movieDetail.genres.map((genre) => (
+                  <span key={genre.name} className="genre">
+                    {genre.name}
+                    <span className="genre__seperator">|</span>
+                  </span>
+                ))}
+                <span>
+                  {movieDetail.runtime}
+                  {' '}
+                  min
+                </span>
+                <span className="genre__seperator">|</span>
+                <span className="release-date">{movieDetail.release_date}</span>
+                <p className="overview">{movieDetail.overview}</p>
+              </div>
+              <div className="casts">
+                {cast.cast.slice(0, 5).map((actor) => (
+                  <div className="casts-info">
+                    {actor.profile_path !== null
+                    && <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} alt="actorPhoto" className="cast__image" />}
+                    <p className="cast-name">{actor.name}</p>
+
+                  </div>
+                ))}
+
+              </div>
+            </div>
           </div>
-        ) : (
-          <h1>loading</h1>
+          {/*  <div className="movie__image">
+            <img src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} alt="" />
+          </div> */}
+
+        </section>
         )}
+
+      <div className="player-wrapper">
+        {video?.length > 0
+        && (
+        <ReactPlayer
+          className="react-player"
+          url={`https://www.youtube.com/watch?v=${video}`}
+          width="100%"
+          height="100%"
+          controls
+        />
+        )}
+      </div>
     </>
 
   );
@@ -44,6 +116,8 @@ function mapStateToProps(state) {
   return {
     video: state.movieReducer.video,
     allMovies: state.movieReducer.allMovies,
+    movieDetail: state.movieReducer.movieDetail,
+    cast: state.movieReducer.cast,
 
   };
 }
