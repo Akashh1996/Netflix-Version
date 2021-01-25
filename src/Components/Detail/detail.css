@@ -1,7 +1,5 @@
 .detail{
     margin-top: 80px;
-}
-.movie-detail{
     display: flex;
 }
 
@@ -9,6 +7,11 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
+}
+.movie-detail{
+    padding-right: 10px;
+    width: 90%;
+
 }
 .movie__release-date{
     font-size: 13px;
@@ -40,7 +43,7 @@
     display: flex;
 }
 .overview{
-    font-size: 14px;
+    font-size: 15px;
     margin: 15px 0;
     line-height: 23px;
 }
@@ -48,15 +51,17 @@
 
 .casts{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    padding-left: 2%;
 }
 .cast-name{
     font-size: 12px;
    text-align: center;
 }
-.casts-info{
-    padding-right:  10px ;
+.casts>div{
+    margin-bottom: 20px;
 }
+
 @media only screen and (max-width: 800px) {
     .movie-detail{
         flex-wrap: wrap;

@@ -45,7 +45,6 @@ function Detail({
   }
   return (
     <>
-
       { movieDetail && cast
         && (
         <section className="detail">
@@ -83,10 +82,26 @@ function Detail({
                 <span className="release-date">{movieDetail.release_date}</span>
                 <p className="overview">{movieDetail.overview}</p>
               </div>
-              <div className="casts">
-                {cast.cast.slice(0, 5).map((actor) => (
-                  <div className="casts-info">
-                    {actor.profile_path !== null
+            </div>
+
+            <div className="player-wrapper">
+              {video
+              && (
+              <ReactPlayer
+                className="react-player"
+                url={`https://www.youtube.com/watch?v=${video}`}
+                width="80%"
+                height="80%"
+                controls
+              />
+              )}
+            </div>
+          </div>
+
+          <div className="casts">
+            {cast.cast.slice(0, 3).map((actor) => (
+              <div className="casts-info">
+                {actor.profile_path !== null
                     && (
                     <>
                       <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} alt="actorPhoto" className="cast__image" />
@@ -94,31 +109,12 @@ function Detail({
                     </>
                     )}
 
-                  </div>
-                ))}
-
               </div>
-            </div>
+            ))}
           </div>
-          {/*  <div className="movie__image">
-            <img src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} alt="" />
-          </div> */}
-
         </section>
         )}
 
-      <div className="player-wrapper">
-        {video
-        && (
-        <ReactPlayer
-          className="react-player"
-          url={`https://www.youtube.com/watch?v=${video}`}
-          width="100%"
-          height="100%"
-          controls
-        />
-        )}
-      </div>
     </>
 
   );
