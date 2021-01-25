@@ -14,23 +14,31 @@ function Detail({
 
   useEffect(() => {
     dispatch(loadVideo(id));
-  }, [id]);
+  }, [dispatch, video]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
-    if (!movieDetail || movieDetail.id !== id) {
+    let isdetailReady = false;
+    if ((!movieDetail || movieDetail.id !== id) && !isdetailReady) {
       dispatch(loadMovieDetail(id));
     }
-  }, [id]);
+    return () => {
+      isdetailReady = true;
+    };
+  }, [movieDetail?.original_title, dispatch]);
 
   useEffect(() => {
-    if (!cast || cast.id !== id) {
+    let isCastReady = false;
+    if ((!cast || cast.id !== id) && !isCastReady) {
       dispatch(loadMovieCast(id));
     }
-  }, [id]);
+    return () => {
+      isCastReady = true;
+    };
+  }, [id, dispatch]);
 
   function splitDate(date) {
     return date.split('-')[0];
@@ -79,8 +87,12 @@ function Detail({
                 {cast.cast.slice(0, 5).map((actor) => (
                   <div className="casts-info">
                     {actor.profile_path !== null
-                    && <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} alt="actorPhoto" className="cast__image" />}
-                    <p className="cast-name">{actor.name}</p>
+                    && (
+                    <>
+                      <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} alt="actorPhoto" className="cast__image" />
+                      <p className="cast-name">{actor.name}</p>
+                    </>
+                    )}
 
                   </div>
                 ))}
@@ -96,7 +108,7 @@ function Detail({
         )}
 
       <div className="player-wrapper">
-        {video?.length > 0
+        {video
         && (
         <ReactPlayer
           className="react-player"
