@@ -74,8 +74,6 @@ function Detail({
                 url={`https://www.youtube.com/watch?v=${video}`}
                 className="react-player"
                 playing="true"
-                width="100%"
-                height="100%"
               />
               )}
                 </div>
