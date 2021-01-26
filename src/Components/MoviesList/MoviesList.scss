@@ -6,9 +6,7 @@
     height: 100%;
 }
 
-
-
-.favorite-button:hover + img{
+.favorite-button:hover + a > img{
     transform: scale(1.20);
   transition: 0.4s;
   opacity: 0.5;
@@ -29,12 +27,11 @@
     cursor: pointer;
     padding: 3px;
     border: 0;
-    top: 85%;
+    top: 89%;
     left: 0%;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s linear;
-
 }
 
 .movie-card:hover >  .favorite-button{
@@ -44,5 +41,4 @@
     transform: scale(1.2);
     visibility: visible;
     opacity: 1;
-
 }
