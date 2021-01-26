@@ -73,7 +73,7 @@ function Detail({
               <ReactPlayer
                 url={`https://www.youtube.com/watch?v=${video}`}
                 className="react-player"
-                playing="true"
+                playing
               />
               )}
                 </div>
