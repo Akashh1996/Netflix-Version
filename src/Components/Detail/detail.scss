@@ -84,10 +84,11 @@
     display: flex;
     align-items: flex-end;
     cursor: pointer;
+    color: red;
+
 }
 .back-to-home:hover{
-    color: #E50914;
-    transition: 0.8s;
+    color: red;
 }
 .back__text{
     margin-left: 10px;
@@ -153,7 +154,25 @@
     .seperator-detail{
         margin: 0 13px;
     }
-  
+    .movie__star{
+        align-items: unset;
+    }
+    .movie-detail__title h1{
+        font-size: 1.2em;
+    }
+    .movie-detail__extra{
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+    .overview{
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .casts-info:hover{
+        outline: 0px;
+    }
+   
 
  
   }
