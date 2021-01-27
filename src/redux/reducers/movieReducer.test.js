@@ -156,4 +156,136 @@ describe('Given movieReducer function', () => {
       expect(newState).toEqual({ ...initialState, similarMovieError: 'Error Message' });
     });
   });
+
+  describe(`When action type is ${actionTypes.SET_LOADING}`, () => {
+    test('Then return an object with propertie loading true', () => {
+      const initialState = {};
+
+      const expectedState = {
+        ...initialState,
+        loading: true,
+      };
+
+      const action = {
+        type: actionTypes.SET_LOADING,
+      };
+
+      newState = movieReducer(initialState, action);
+
+      expect(newState).toEqual(expectedState);
+    });
+  });
+
+  describe(`When action type is ${actionTypes.LOAD_VIDEO}`, () => {
+    test('Then return an object with video and set loading to false', () => {
+      const initialState = {};
+
+      const expectedState = {
+        ...initialState,
+        video: 'Video',
+        loading: false,
+      };
+
+      const action = {
+        type: actionTypes.LOAD_VIDEO,
+        video: 'Video',
+      };
+
+      newState = movieReducer(initialState, action);
+
+      expect(newState).toEqual(expectedState);
+    });
+  });
+
+  describe(`When action type is ${actionTypes.LOAD_VIDEO_ERROR}`, () => {
+    test('Then return an object with video error message and set loading to false', () => {
+      const initialState = {};
+
+      const expectedState = {
+        ...initialState,
+        videoError: 'Error Message',
+        loading: false,
+      };
+
+      const action = {
+        type: actionTypes.LOAD_VIDEO_ERROR,
+        error: 'Error Message',
+      };
+
+      newState = movieReducer(initialState, action);
+
+      expect(newState).toEqual(expectedState);
+    });
+  });
+
+  describe(`When action type is ${actionTypes.LOAD_MOVIE_DETAIL}`, () => {
+    test('Then return an object with movie detail', () => {
+      const initialState = {};
+
+      const expectedState = {
+        ...initialState,
+        movieDetail: 'This is the movie detail',
+      };
+
+      const action = {
+        type: actionTypes.LOAD_MOVIE_DETAIL,
+        movieDetail: 'This is the movie detail',
+      };
+
+      newState = movieReducer(initialState, action);
+
+      expect(newState).toEqual(expectedState);
+    });
+  });
+
+  describe(`When action type is ${actionTypes.LOAD_CAST}`, () => {
+    test('Then return an object with an array of movie cast', () => {
+      const initialState = {};
+
+      const expectedState = {
+        ...initialState,
+        cast: ['CastMemberOne', 'CastMemberTwo', 'CastMemberThree'],
+      };
+
+      const action = {
+        type: actionTypes.LOAD_CAST,
+        cast: ['CastMemberOne', 'CastMemberTwo', 'CastMemberThree'],
+      };
+
+      newState = movieReducer(initialState, action);
+
+      expect(newState).toEqual(expectedState);
+    });
+  });
+
+  describe(`When action type is ${actionTypes.CLEAR_DETAIL}`, () => {
+    test('Then return an object setting cast, video and movieDetail to null', () => {
+      const initialState = {
+        allMovies: {
+          'Up Coming': ['MovieOne', 'MovieTwo'],
+          Popular: ['MovieOne', 'MovieTwo'],
+          'Now Playing': ['MovieOne', 'MovieTwo'],
+        },
+        categories: ['MovieOne', 'MovieTwo'],
+        video: 'Video',
+        cast: ['CastMemberOne', 'CastMemberTwo', 'CastMemberThree'],
+        movieDetail: 'This is the movie detail',
+      };
+
+      const expectedState = {
+        ...initialState,
+        cast: null,
+        video: null,
+        movieDetail: null,
+      };
+
+      const action = {
+        type: actionTypes.CLEAR_DETAIL,
+      };
+
+      newState = movieReducer(initialState, action);
+
+      expect(newState).toEqual(expectedState);
+    });
+  });
 });
