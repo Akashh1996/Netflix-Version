@@ -9,11 +9,13 @@ import Detail from './Components/Detail/Detail';
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <Switch>
-        <Route path="/search/" exact component={SeachResult} />
-        <Route path="/" exact component={Home} />
         <Route path="/detail/:id" exact component={Detail} />
+        <>
+          <Header />
+          <Route path="/" exact component={Home} />
+          <Route path="/search/" exact component={SeachResult} />
+        </>
 
       </Switch>
     </BrowserRouter>
