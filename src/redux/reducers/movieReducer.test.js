@@ -33,7 +33,6 @@ describe('Given movieReducer function', () => {
           'Now Playing': ['MovieOne', 'MovieTwo'],
         },
         categories: ['MovieOne', 'MovieTwo'],
-
       };
 
       const compareState = {
@@ -43,6 +42,7 @@ describe('Given movieReducer function', () => {
           'Now Playing': ['MovieOne', 'MovieTwo'],
         },
         categories: ['MovieOne', 'MovieTwo'],
+        loading: false,
 
       };
 
@@ -87,7 +87,7 @@ describe('Given movieReducer function', () => {
 
       newState = movieReducer(initialState, action);
 
-      expect(newState).toEqual({ ...initialState, moviesList: action.moviesList });
+      expect(newState).toEqual({ ...initialState, moviesList: action.moviesList, loading: false });
     });
 
     describe(`When action type is ${actionTypes.LOAD_MOVIE_BY_SEARCH_ERROR}`, () => {
@@ -131,7 +131,7 @@ describe('Given movieReducer function', () => {
 
       newState = movieReducer(initialState, action);
 
-      expect(newState).toEqual({ ...initialState, similar: action.similar });
+      expect(newState).toEqual({ ...initialState, similar: action.similar, loading: false });
     });
   });
 
