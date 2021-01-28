@@ -19,10 +19,6 @@ function Detail({
     dispatch(loadMovieDetail(id));
     dispatch(loadMovieCast(id));
   }, []);
-  /*
-  useEffect(() => {
-    window.scrollTo(0, 80);
-  }, []); */
 
   function splitDate(date) {
     return date.split('-')[0];
