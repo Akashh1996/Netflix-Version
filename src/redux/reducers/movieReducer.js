@@ -54,7 +54,8 @@ export default function movieReducer(state = initialState, action) {
     case actionTypes.LOAD_VIDEO_ERROR:
       return {
         ...state,
-        error: action.error,
+        videoError: action.error,
+        loading: false,
       };
     case actionTypes.LOAD_MOVIE_DETAIL:
       return {
