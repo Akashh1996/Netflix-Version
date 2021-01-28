@@ -109,13 +109,13 @@ function Detail({
   );
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ movieReducer }) {
   return {
-    video: state.movieReducer.video,
-    allMovies: state.movieReducer.allMovies,
-    movieDetail: state.movieReducer.movieDetail,
-    cast: state.movieReducer.cast,
-    loading: state.movieReducer.loading,
+    video: movieReducer.video,
+    allMovies: movieReducer.allMovies,
+    movieDetail: movieReducer.movieDetail,
+    cast: movieReducer.cast,
+    loading: movieReducer.loading,
 
   };
 }

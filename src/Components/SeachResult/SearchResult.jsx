@@ -61,14 +61,14 @@ function SearchResult({
   );
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ movieReducer }) {
   return {
-    searchMovieResult: state.movieReducer.moviesList,
-    searchError: state.movieReducer.searchError,
-    query: state.movieReducer.query,
-    similarMovie: state.movieReducer.similar,
-    similarMovieError: state.movieReducer.similarMovieError,
-    loading: state.movieReducer.loading,
+    searchMovieResult: movieReducer.moviesList,
+    searchError: movieReducer.searchError,
+    query: movieReducer.query,
+    similarMovie: movieReducer.similar,
+    similarMovieError: movieReducer.similarMovieError,
+    loading: movieReducer.loading,
   };
 }
 

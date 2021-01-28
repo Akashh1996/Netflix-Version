@@ -39,9 +39,9 @@ function MoviesListComponent({ movies, allMovies }) {
   );
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ movieReducer }) {
   return {
-    allMovies: state.movieReducer.allMovies,
+    allMovies: movieReducer.allMovies,
   };
 }
 export default connect(mapStateToProps)(MoviesListComponent);

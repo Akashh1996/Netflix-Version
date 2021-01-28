@@ -33,9 +33,9 @@ function SearchCommon({ movies, loading }) {
   );
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ movieReducer }) {
   return {
-    loading: state.movieReducer.loading,
+    loading: movieReducer.loading,
   };
 }
 

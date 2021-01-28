@@ -71,14 +71,14 @@ Home.defaultProps = {
   categories: null,
   allMovies: null,
 };
-function mapStateToProps(state) {
+function mapStateToProps({ movieReducer }) {
   return {
-    allMovies: state.movieReducer.allMovies,
-    categories: state.movieReducer.categories,
-    video: state.movieReducer.video,
-    movieDetail: state.movieReducer.movieDetail,
-    cast: state.movieReducer.cast,
-    loading: state.movieReducer.loading,
+    allMovies: movieReducer.allMovies,
+    categories: movieReducer.categories,
+    video: movieReducer.video,
+    movieDetail: movieReducer.movieDetail,
+    cast: movieReducer.cast,
+    loading: movieReducer.loading,
   };
 }
 
