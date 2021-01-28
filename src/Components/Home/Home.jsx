@@ -28,7 +28,7 @@ function Home({
     <>
       <div className="cover-photo">
         <div className="movie-titile">
-          <img src="https://occ-0-3898-360.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABTJxQjyxnIx-LtrusuM5QngSU94C0mEzqw_G0nT-gYTRiBuxMXPqlj7sM6F9UDtQiDMm0WX4UdvNjwA8BSwiXYzxJGvubqKBgothb-e3PEEHkjW-iCgjAscMR8Ivw_Jrh0H11Gs4HX3_8TYSVBjZI1bw4arbxZe7hmw37CGmf9ZG7Q.webp?r=366" alt="" />
+          <img src="https://occ-0-3898-360.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABXW3pllmB9IbwsmLWIqP7O4Rxd-1psQMl1BN5B0vsrj8wodd7IdRUoqrs2RDfNMF4uv7Q1dwgQZNEILArcjYP9tcfAgEGTC6cacriS4vQZMUb35v8a0YNVqzvPx2ebBHyn5PyhkIigBM9KGhiJzfgEXn1JRX-oUvQx-Flzlxne8QQw.webp?r=e46" alt="" />
           <div className="movie-description-wrapper">
             <p className="movie-description">
               Waking from a coma, Vanessa finds lone soldier Axel protecting her
@@ -71,14 +71,14 @@ Home.defaultProps = {
   categories: null,
   allMovies: null,
 };
-function mapStateToProps(state) {
+function mapStateToProps({ movieReducer }) {
   return {
-    allMovies: state.movieReducer.allMovies,
-    categories: state.movieReducer.categories,
-    video: state.movieReducer.video,
-    movieDetail: state.movieReducer.movieDetail,
-    cast: state.movieReducer.cast,
-    loading: state.movieReducer.loading,
+    allMovies: movieReducer.allMovies,
+    categories: movieReducer.categories,
+    video: movieReducer.video,
+    movieDetail: movieReducer.movieDetail,
+    cast: movieReducer.cast,
+    loading: movieReducer.loading,
   };
 }
 

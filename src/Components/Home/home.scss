@@ -1,6 +1,6 @@
 
 .cover-photo{
-    background-image: url("https://wallpaperset.com/w/full/1/2/2/241466.jpg");
+    background-image: url("https://occ-0-3898-360.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABRB6-V0pcrI6F_ETJOFVSI7r1AZJtitBBh7sfoWc9FkVgoPsBQxQAZFvPoejyQ9vvgWddse0MPamSr0Y0QMIw_dZgKZX.webp?r=901");
     height: 530px;
     background-repeat: no-repeat; 
     background-size: cover; 
@@ -81,4 +81,20 @@
     .movie-titile, .movie-play-info{
         padding: 10px 14px;
     }
+    .cover-photo{
+        height: 480px; 
+        background-position: right;
+
+    }
+    .movie-play-info{
+        
+        top: 85%;
+    }
+    .play, .movie-play-info{
+        padding: 5px 12.5px;
+    }
+    .movie-titile img{
+        width: 250px;
+    }
+    
 }
