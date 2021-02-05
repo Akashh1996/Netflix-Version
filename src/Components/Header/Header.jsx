@@ -1,3 +1,5 @@
+/* eslint-disable no-debugger */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
@@ -5,10 +7,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import { Link as ScrollLink } from 'react-scroll';
 import { loadBySearch } from '../../redux/actions/movieAction';
+import { signInWithGoogle, signOut } from '../../redux/actions/userAction';
 import './header.scss';
 
-function Header({ dispatch }) {
-  const categoryNames = ['Up Coming', 'Popular', 'Now Playing'];
+function Header({ dispatch, isLogged }) {
+  const categoryNames = ['Upcoming', 'Popular', 'Now Playing'];
   const history = useHistory();
   const [show, handleShow] = useState(false);
   const [query, setQuery] = useState('');
@@ -43,9 +46,16 @@ function Header({ dispatch }) {
     };
   }, []);
 
+  function handleSignIn() {
+    if (!isLogged) {
+      dispatch(signInWithGoogle());
+    } else {
+      dispatch(signOut());
+    }
+  }
+
   return (
     <header>
-
       <nav className={`nav ${show && 'nav__black'}`} id="nav">
         <div className="nav-items">
           <div className="nav-items-left">
@@ -53,11 +63,6 @@ function Header({ dispatch }) {
               <Link to="/">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="logo" id="logo" />
               </Link>
-            </div>
-            <div className="nav-item__home">
-              {' '}
-              <Link to="/">Home</Link>
-              {' '}
             </div>
             <div className="nav-item__category">
               {categoryNames.map((category) => (
@@ -74,6 +79,14 @@ function Header({ dispatch }) {
                 </ScrollLink>
               ))}
             </div>
+            {isLogged
+            && (
+            <div className="nav-item__myList">
+              {' '}
+              <Link to="/">My List</Link>
+              {' '}
+            </div>
+            )}
           </div>
           <div className="nav-items-right">
             <div className="nav-search">
@@ -96,9 +109,13 @@ function Header({ dispatch }) {
               </div>
             </div>
             <div className="user">
-              <Link to="/">
+              <Link
+                to="/"
+                onClick={() => handleSignIn()}
+
+              >
                 <img
-                  src="https://i.pinimg.com/originals/30/db/47/30db479e1558c3ed46b4ed23b3cd98ae.png"
+                  src={!isLogged ? 'https://i.pinimg.com/originals/30/db/47/30db479e1558c3ed46b4ed23b3cd98ae.png' : 'https://i.dlpng.com/static/png/1146194_preview_preview.png'}
                   alt="logo"
                   style={{ width: '34px', borderRadius: '4px', marginTop: '3px' }}
                 />
@@ -110,6 +127,7 @@ function Header({ dispatch }) {
         </div>
       </nav>
     </header>
+
   );
 }
 
@@ -118,4 +136,12 @@ Header.propTypes = {
 
 };
 
-export default connect()(Header);
+function mapStateToProps(state) {
+  debugger;
+  return {
+    user: state.userReducer.user,
+    isLogged: state.userReducer.isLogged,
+  };
+}
+
+export default connect(mapStateToProps)(Header);
