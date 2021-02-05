@@ -10,7 +10,7 @@ import { loadBySearch } from '../../redux/actions/movieAction';
 import { signInWithGoogle, signOut } from '../../redux/actions/userAction';
 import './header.scss';
 
-function Header({ dispatch, isLogged }) {
+function Header({ dispatch, user }) {
   const categoryNames = ['Upcoming', 'Popular', 'Now Playing'];
   const history = useHistory();
   const [show, handleShow] = useState(false);
@@ -47,7 +47,7 @@ function Header({ dispatch, isLogged }) {
   }, []);
 
   function handleSignIn() {
-    if (!isLogged) {
+    if (!user) {
       dispatch(signInWithGoogle());
     } else {
       dispatch(signOut());
@@ -79,7 +79,7 @@ function Header({ dispatch, isLogged }) {
                 </ScrollLink>
               ))}
             </div>
-            {isLogged
+            {user
             && (
             <div className="nav-item__myList">
               {' '}
@@ -115,7 +115,7 @@ function Header({ dispatch, isLogged }) {
 
               >
                 <img
-                  src={!isLogged ? 'https://i.pinimg.com/originals/30/db/47/30db479e1558c3ed46b4ed23b3cd98ae.png' : 'https://i.dlpng.com/static/png/1146194_preview_preview.png'}
+                  src={!user ? 'https://i.pinimg.com/originals/30/db/47/30db479e1558c3ed46b4ed23b3cd98ae.png' : 'https://i.dlpng.com/static/png/1146194_preview_preview.png'}
                   alt="logo"
                   style={{ width: '34px', borderRadius: '4px', marginTop: '3px' }}
                 />
@@ -137,10 +137,8 @@ Header.propTypes = {
 };
 
 function mapStateToProps(state) {
-  debugger;
   return {
     user: state.userReducer.user,
-    isLogged: state.userReducer.isLogged,
   };
 }
 

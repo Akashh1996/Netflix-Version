@@ -15,7 +15,7 @@
 .favorite-button{
     position: absolute;
     text-align: center;
-    color: red;
+    color: white;
     visibility: hidden;
     background-color: rgba(0, 0, 0, 0.452);
     width: 30px;
@@ -41,4 +41,8 @@
     transform: scale(1.2);
     visibility: visible;
     opacity: 1;
+}
+
+.favorite-button-active{
+    color: red;
 }
