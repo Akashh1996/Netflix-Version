@@ -8,19 +8,6 @@ import './MoviesList.scss';
 function MoviesListComponent({ movies, allMovies }) {
   const [moviesCategories] = useState(allMovies[movies]);
 
-  const [color, setColor] = useState(false);
-
-  function handleClick(event) {
-    const button = event.target.parentElement;
-    if (color) {
-      button.classList.remove('favorite-button-active');
-      setColor(false);
-    } else {
-      button.classList.add('favorite-button-active');
-      setColor(true);
-    }
-  }
-  console.log(color);
   return (
     <div id={movies}>
       <div className="now-playing" id="now-playing">
@@ -37,7 +24,6 @@ function MoviesListComponent({ movies, allMovies }) {
                 <button
                   type="button"
                   className="favorite-button"
-                  onClick={(event) => handleClick(event)}
                 >
                   <FavoriteIcon />
                 </button>
