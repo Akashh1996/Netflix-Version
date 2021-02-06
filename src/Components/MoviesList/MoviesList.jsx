@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -6,6 +7,7 @@ import './MoviesList.scss';
 
 function MoviesListComponent({ movies, allMovies }) {
   const [moviesCategories] = useState(allMovies[movies]);
+
   return (
     <div id={movies}>
       <div className="now-playing" id="now-playing">
@@ -19,7 +21,10 @@ function MoviesListComponent({ movies, allMovies }) {
               movieList.poster_path !== null
               && (
               <>
-                <button type="button" className="favorite-button">
+                <button
+                  type="button"
+                  className="favorite-button"
+                >
                   <FavoriteIcon />
                 </button>
                 <Link to={`/detail/${movieList.id}`}>
@@ -39,9 +44,10 @@ function MoviesListComponent({ movies, allMovies }) {
   );
 }
 
-function mapStateToProps({ movieReducer }) {
+function mapStateToProps({ movieReducer, userReducer }) {
   return {
     allMovies: movieReducer.allMovies,
+    isLogged: userReducer.isLogged,
   };
 }
 export default connect(mapStateToProps)(MoviesListComponent);

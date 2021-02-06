@@ -40,6 +40,9 @@ header{
     margin-left: 10px;
     cursor: pointer;
 }
+.nav-item__category {
+    margin-left: 10px;
+}
 a:hover{
     color: rgba(255,255,255,0.75);
     transition: 0.1s;
@@ -67,6 +70,9 @@ input{
 .nav-search__icon{
     margin-top: 4px;
     padding-left: 7px;
+}
+.nav-item__myList{
+    margin-left: 10px;
 }
 @media only screen and (max-width: 600px) {
     
