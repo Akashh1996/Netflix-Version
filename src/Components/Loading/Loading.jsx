@@ -22,7 +22,7 @@ export default function CircularIndeterminate() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="aver">
       <CircularProgress className={classes.spinner} />
     </div>
   );
