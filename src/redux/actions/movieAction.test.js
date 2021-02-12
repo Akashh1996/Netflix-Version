@@ -1,5 +1,8 @@
 import axios from 'axios';
-import { loadBySearch, loadMovies, getSimilarMovie } from './movieAction';
+import {
+  loadBySearch, loadMovies, getSimilarMovie, setLoading, loadVideo,
+  loadMovieDetail, loadMovieCast, clearDetail,
+} from './movieAction';
 import actionTypes from './actionTypes';
 
 jest.mock('axios');
@@ -25,7 +28,7 @@ describe('Given movieActions', () => {
 
         await loadBySearch()(dispatch);
 
-        expect(dispatch.mock.calls[0][0]).toEqual(expectedAction);
+        expect(dispatch.mock.calls[1][0]).toEqual(expectedAction);
       });
     });
 
@@ -37,7 +40,7 @@ describe('Given movieActions', () => {
 
         await loadBySearch()(dispatch);
 
-        expect(dispatch.mock.calls[0][0]).toEqual(expectedAction);
+        expect(dispatch.mock.calls[1][0]).toEqual(expectedAction);
       });
     });
   });
@@ -50,16 +53,16 @@ describe('Given movieActions', () => {
         const expectedAction = {
           type: actionTypes.LOAD_MOVIES,
           allMovies: {
-            'Up Coming': ['MovieOne', 'MovieTwo'],
+            Upcoming: ['MovieOne', 'MovieTwo'],
             Popular: ['MovieOne', 'MovieTwo'],
             'Now Playing': ['MovieOne', 'MovieTwo'],
           },
-          categories: ['Up Coming', 'Popular', 'Now Playing'],
+          categories: ['Upcoming', 'Popular', 'Now Playing'],
         };
 
         await loadMovies()(dispatch);
 
-        expect(dispatch.mock.calls[0][0]).toEqual(expectedAction);
+        expect(dispatch.mock.calls[1][0]).toEqual(expectedAction);
       });
     });
 
@@ -73,8 +76,9 @@ describe('Given movieActions', () => {
         };
 
         await loadMovies()(dispatch);
+        await setLoading()(dispatch);
 
-        expect(dispatch.mock.calls[0][0]).toEqual(expectedAction);
+        expect(dispatch.mock.calls[1][0]).toEqual(expectedAction);
       });
     });
   });
@@ -88,7 +92,7 @@ describe('Given movieActions', () => {
 
         await getSimilarMovie(12)(dispatch);
 
-        expect(dispatch.mock.calls[0][0]).toEqual(expectedAction);
+        expect(dispatch.mock.calls[1][0]).toEqual(expectedAction);
       });
     });
 
@@ -100,8 +104,107 @@ describe('Given movieActions', () => {
 
         await getSimilarMovie(12)(dispatch);
 
+        expect(dispatch.mock.calls[1][0]).toEqual(expectedAction);
+      });
+    });
+  });
+  describe('When loadVideo is called', () => {
+    describe('And axios get method repond with a video key', () => {
+      test(`Then should call dispatch with an object with type ${actionTypes.LOAD_VIDEO} a video key`, async () => {
+        axios.get = jest.fn().mockImplementation(() => Promise.resolve({ data: { results: [{ key: '123abcd' }] } }));
+
+        const expectedAction = { type: actionTypes.LOAD_VIDEO, video: '123abcd' };
+
+        await loadVideo(12)(dispatch);
+
+        expect(dispatch.mock.calls[1][0]).toEqual(expectedAction);
+      });
+    });
+
+    describe('And axios get method repond with an error', () => {
+      test(`Then should call dispatch with an object with type ${actionTypes.LOAD_VIDEO_ERROR} `, async () => {
+        axios.get = jest.fn().mockImplementation(() => Promise.reject(new Error('Error message')));
+
+        const expectedAction = { type: actionTypes.LOAD_VIDEO_ERROR, error: 'Error message' };
+
+        await loadVideo(12)(dispatch);
+
+        expect(dispatch.mock.calls[1][0]).toEqual(expectedAction);
+      });
+    });
+  });
+
+  describe('When loadMovieDetail is called', () => {
+    describe('And axios get method repond with an object', () => {
+      test(`Then should call dispatch with an object with type ${actionTypes.LOAD_MOVIE_DETAIL} `, async () => {
+        axios.get = jest.fn().mockImplementation(() => Promise.resolve({
+          data:
+            {
+              name: 'hellboy',
+            },
+        }));
+
+        const expectedAction = { type: actionTypes.LOAD_MOVIE_DETAIL, movieDetail: { name: 'hellboy' } };
+
+        await loadMovieDetail(12)(dispatch);
+
         expect(dispatch.mock.calls[0][0]).toEqual(expectedAction);
       });
+    });
+
+    describe('And axios get method repond with an error', () => {
+      test(`Then should call dispatch with an object with type ${actionTypes.LOAD_MOVIE_DETAIL_ERROR} `, async () => {
+        axios.get = jest.fn().mockImplementation(() => Promise.reject(new Error('Error message')));
+
+        const expectedAction = { type: actionTypes.LOAD_MOVIE_DETAIL_ERROR, error: 'Error message' };
+
+        await loadMovieDetail(12)(dispatch);
+
+        expect(dispatch.mock.calls[0][0]).toEqual(expectedAction);
+      });
+    });
+  });
+
+  describe('When loadMovieCast is called', () => {
+    describe('And axios get method repond with an object', () => {
+      test(`Then should call dispatch with an object with type ${actionTypes.LOAD_CAST} `, async () => {
+        axios.get = jest.fn().mockImplementation(() => Promise.resolve({
+          data:
+            {
+              actorName: 'jack sparrow',
+            },
+        }));
+
+        const expectedAction = { type: actionTypes.LOAD_CAST, cast: { actorName: 'jack sparrow' } };
+
+        await loadMovieCast(15)(dispatch);
+
+        expect(dispatch.mock.calls[0][0]).toEqual(expectedAction);
+      });
+    });
+
+    describe('And axios get method repond with an error', () => {
+      test(`Then should call dispatch with an object with type ${actionTypes.LOAD_CAST_ERROR} `, async () => {
+        axios.get = jest.fn().mockImplementation(() => Promise.reject(new Error('Error message')));
+
+        const expectedAction = { type: actionTypes.LOAD_CAST_ERROR, error: 'Error message' };
+
+        await loadMovieCast(12)(dispatch);
+
+        expect(dispatch.mock.calls[0][0]).toEqual(expectedAction);
+      });
+    });
+  });
+
+  describe('when clearDetail is called', () => {
+    test(`Then should call dispatch with an object with type ${actionTypes.CLEAR_DETAIL}`, () => {
+      const expectedAction = {
+        type: actionTypes.CLEAR_DETAIL,
+      };
+
+      clearDetail()(dispatch);
+
+      expect(dispatch.mock.calls[0][0]).toEqual(expectedAction);
     });
   });
 });

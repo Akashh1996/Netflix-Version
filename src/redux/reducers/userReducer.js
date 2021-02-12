@@ -1,7 +1,7 @@
 /* eslint-disable no-debugger */
 import actionTypes from '../actions/actionTypes';
 
-const initialState = { isLogged: false };
+const initialState = { };
 
 export default function movieReducer(state = initialState, action) {
   switch (action.type) {
@@ -10,13 +10,11 @@ export default function movieReducer(state = initialState, action) {
       return {
         ...state,
         user: action.user,
-        isLogged: true,
       };
     case actionTypes.AUTH_LOGOUT:
       return {
         ...state,
         user: null,
-        isLogged: false,
       };
 
     default:
