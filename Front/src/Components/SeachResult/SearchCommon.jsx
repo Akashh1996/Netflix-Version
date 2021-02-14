@@ -4,21 +4,38 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Loading from '../Loading/Loading';
+import checkFav from '../../util/function';
+import { addFav, deleteFav } from '../../redux/actions/userAction';
 
-function SearchCommon({ movies, loading, getUserDB }) {
+function SearchCommon({
+  movies, loading, getUserDB, dispatch,
+}) {
   let fav;
   if (getUserDB) {
     fav = getUserDB.favourites;
   }
-  function checkFav(id) {
-    let isFav = false;
-    for (let index = 0; index < fav?.length; index++) {
-      if (fav[index].id === id) {
-        isFav = true;
+
+  const userLocalStorage = JSON.parse(window.localStorage.getItem('user'));
+  const loggedUser = userLocalStorage?.user?.email;
+
+  function handleClick(movieList) {
+    if (loggedUser) {
+      const bool = fav?.some((e) => e.id === movieList.id);
+      if (bool) {
+        dispatch(deleteFav({
+          id: movieList?.id,
+          email: loggedUser,
+        }));
+      } else {
+        dispatch(addFav({
+          id: movieList?.id,
+          email: loggedUser,
+          image: movieList?.poster_path,
+        }));
       }
     }
-    return isFav;
   }
+
   return (
     <div>
       <ul className="image-wrapper">
@@ -32,7 +49,9 @@ function SearchCommon({ movies, loading, getUserDB }) {
             <>
               <button
                 type="button"
-                className={checkFav(movie.id) === true ? 'favorite-button favorite-button-active' : 'favorite-button'}
+                className={checkFav(movie.id, fav) ? 'favorite-button favorite-button-active' : 'favorite-button'}
+                onClick={() => handleClick(movie)}
+
               >
                 <FavoriteIcon />
               </button>

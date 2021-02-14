@@ -14,6 +14,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import { makeStyles } from '@material-ui/core/styles';
+import checkFav from '../../util/function';
 import { addFav, deleteFav } from '../../redux/actions/userAction';
 
 const useStyles = makeStyles(() => ({
@@ -63,16 +64,6 @@ function MoviesListComponent({
 
   const userLocalStorage = JSON.parse(window.localStorage.getItem('user'));
   const loggedUser = userLocalStorage?.user?.email;
-
-  function checkFav(id) {
-    let isFav = false;
-    for (let index = 0; index < fav?.length; index++) {
-      if (fav[index].id === id) {
-        isFav = true;
-      }
-    }
-    return isFav;
-  }
 
   function handleClick(movieList) {
     if (loggedUser) {
@@ -139,7 +130,7 @@ function MoviesListComponent({
               <>
                 <button
                   type="button"
-                  className={checkFav(movieList.id) === true ? 'favorite-button favorite-button-active' : 'favorite-button'}
+                  className={checkFav(movieList.id, fav) ? 'favorite-button favorite-button-active' : 'favorite-button'}
                   onClick={() => handleClick(movieList)}
 
                 >
