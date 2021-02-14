@@ -57,7 +57,6 @@ function userController(User: any): userControllerInterface {
       const userFind = await User.findOne({ email });
 
       const filteredFavourites = userFind.favourites.filter((favourite: favInterface) => favourite.id !== id);
-      console.log(filteredFavourites);
       userFind.favourites = filteredFavourites;
       await userFind.save();
       res.json(userFind);
