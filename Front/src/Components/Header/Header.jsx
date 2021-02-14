@@ -127,7 +127,7 @@ function Header({ dispatch, getUserDB }) {
                 <img
                   src={!loggedUser ? 'https://i.pinimg.com/originals/30/db/47/30db479e1558c3ed46b4ed23b3cd98ae.png' : 'https://trello-attachments.s3.amazonaws.com/5f9fe516582bea5ce01d06b2/601ea1de7e048c855c38996e/de93a82da9b5d8d211bb570ff9089abc/logout.png'}
                   alt="login"
-                  style={{ width: '34px', borderRadius: '4px', marginTop: '3px' }}
+                  className="logged-user"
                 />
               </Link>
 

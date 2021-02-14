@@ -74,8 +74,13 @@ input{
 .nav-item__myList{
     margin-left: 10px;
 }
+.logged-user{
+    width: 34px;
+    border-radius: 4px;
+    margin-top: 3px 
+}
+
 @media only screen and (max-width: 600px) {
-    
     input{
         padding: 0;
     }
@@ -87,4 +92,23 @@ input{
     .nav-item__home, .nav-item__category{
         display: none;
     }
+}
+@media only screen and (max-width: 500px) {
+
+    input{
+        width: 120px;
+    }
+    .nav-logo{
+        width: 80px;
+    }
+    .nav-search__icon{
+        margin: 0;
+        font-size: 0px;
+        width: 34px;
+    }
+    .logged-user{
+        width: 28px;
+ 
+    }
+   
 }

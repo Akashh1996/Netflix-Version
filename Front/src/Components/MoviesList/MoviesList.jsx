@@ -66,7 +66,7 @@ function MoviesListComponent({
     dispatch,
     addFav,
     deleteFav,
-    fav: getUserDB.favourites,
+    fav: getUserDB?.favourites,
   };
 
   return (
@@ -114,7 +114,7 @@ function MoviesListComponent({
               <>
                 <button
                   type="button"
-                  className={checkFav(movieList.id, getUserDB.favourites) ? 'favorite-button favorite-button-active' : 'favorite-button'}
+                  className={checkFav(movieList.id, getUserDB?.favourites) ? 'favorite-button favorite-button-active' : 'favorite-button'}
                   onClick={() => handleClick(movieList, clickObject)}
 
                 >
