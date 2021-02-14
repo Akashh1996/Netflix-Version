@@ -10,7 +10,7 @@ import Loading from '../Loading/Loading';
 import './detail.scss';
 
 function Detail({
-  match, video, dispatch, movieDetail, cast, loading,
+  match, videoKey, dispatch, movieDetail, cast, loading,
 }) {
   const { id } = match.params;
 
@@ -75,10 +75,10 @@ function Detail({
             {loading ? <Loading />
               : (
                 <div className="player-wrapper">
-                  {video
+                  {videoKey
               && (
               <ReactPlayer
-                url={`https://www.youtube.com/watch?v=${video}`}
+                url={`https://www.youtube.com/watch?v=${videoKey}`}
                 className="react-player"
                 playing
               />
@@ -111,7 +111,7 @@ function Detail({
 
 function mapStateToProps({ movieReducer }) {
   return {
-    video: movieReducer.video,
+    videoKey: movieReducer.videoKey,
     allMovies: movieReducer.allMovies,
     movieDetail: movieReducer.movieDetail,
     cast: movieReducer.cast,

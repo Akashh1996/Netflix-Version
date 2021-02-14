@@ -123,8 +123,8 @@ export function getUser(email) {
 export function addFav(movie) {
   return async (dispatch) => {
     try {
-      const data = await axios.put(serverUsersUrl, movie);
-      dispatch(addFavouriteSuccess(data.data));
+      const { data: { data } } = await axios.put(serverUsersUrl, movie);
+      dispatch(addFavouriteSuccess(data));
     } catch ({ message }) {
       console.log(message);
     }
@@ -141,8 +141,8 @@ function deleteFavSuccess(userDB) {
 export function deleteFav(movie) {
   return async (dispatch) => {
     try {
-      const data = await axios.patch(serverUsersUrl, movie);
-      dispatch(deleteFavSuccess(data.data));
+      const { data: { data } } = await axios.patch(serverUsersUrl, movie);
+      dispatch(deleteFavSuccess(data));
     } catch ({ message }) {
       console.log(message);
     }

@@ -10,7 +10,7 @@ import Loading from '../Loading/Loading';
 import './home.scss';
 
 function Home({
-  dispatch, allMovies, categories, video, movieDetail, cast, loading,
+  dispatch, allMovies, categories, videoKey, movieDetail, cast, loading,
 }) {
   useEffect(() => {
     if (!allMovies) {
@@ -19,7 +19,7 @@ function Home({
   }, []);
 
   useEffect(() => {
-    if (video || movieDetail || cast) {
+    if (videoKey || movieDetail || cast) {
       dispatch(clearDetail());
     }
   }, []);
@@ -75,7 +75,7 @@ function mapStateToProps({ movieReducer }) {
   return {
     allMovies: movieReducer.allMovies,
     categories: movieReducer.categories,
-    video: movieReducer.video,
+    videoKey: movieReducer.videoKey,
     movieDetail: movieReducer.movieDetail,
     cast: movieReducer.cast,
     loading: movieReducer.loading,

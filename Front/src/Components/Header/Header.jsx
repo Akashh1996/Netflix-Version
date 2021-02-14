@@ -147,8 +147,6 @@ Header.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    user: state.userReducer.user,
-    userDb: state.userReducer.userDB,
     getUserDB: state.userReducer.getUserDB,
   };
 }

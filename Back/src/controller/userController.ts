@@ -52,7 +52,6 @@ function userController(User: any): userControllerInterface {
 
   async function removeFromFAvourites({ body }: Request, res: Response) {
     try {
-      // eslint-disable-next-line no-unused-vars
       const { email, id } = body;
       const userFind = await User.findOne({ email });
 

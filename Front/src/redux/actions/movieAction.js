@@ -140,10 +140,10 @@ function loadVideoError(error) {
   };
 }
 
-function loadVideoSuccess(video) {
+function loadVideoSuccess(videoKey) {
   return {
     type: actionTypes.LOAD_VIDEO,
-    video,
+    videoKey,
   };
 }
 
