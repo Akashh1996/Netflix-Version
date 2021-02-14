@@ -16,7 +16,7 @@ const userSchema : userInterface = new Schema({
   email: String,
   favourites: [
     {
-      id: String,
+      id: Number,
       image: String,
     },
   ],

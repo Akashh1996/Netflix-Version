@@ -5,6 +5,7 @@ import Header from './Components/Header/Header';
 import SeachResult from './Components/SeachResult/SearchResult';
 import Home from './Components/Home/Home';
 import Detail from './Components/Detail/Detail';
+import MyList from './Components/MyList/MyList';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Header />
           <Route path="/" exact component={Home} />
           <Route path="/search/" exact component={SeachResult} />
+          <Route path="/myList/" exact component={MyList} />
         </>
 
       </Switch>
