@@ -14,7 +14,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import { makeStyles } from '@material-ui/core/styles';
-import checkFav from '../../util/function';
+import { checkFav, handleClick } from '../../util/functions';
 import { addFav, deleteFav } from '../../redux/actions/userAction';
 
 const useStyles = makeStyles(() => ({
@@ -46,12 +46,7 @@ function MoviesListComponent({
   movies, allMovies, dispatch, getUserDB,
 }) {
   const [moviesCategories] = useState(allMovies[movies]);
-  let fav;
-  if (getUserDB) {
-    fav = getUserDB.favourites;
-  }
-  const [open, setOpen] = React.useState(false);
-
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
 
   const handleClickOpen = () => {
@@ -65,25 +60,14 @@ function MoviesListComponent({
   const userLocalStorage = JSON.parse(window.localStorage.getItem('user'));
   const loggedUser = userLocalStorage?.user?.email;
 
-  function handleClick(movieList) {
-    if (loggedUser) {
-      const bool = fav?.some((e) => e.id === movieList.id);
-      if (bool) {
-        dispatch(deleteFav({
-          id: movieList?.id,
-          email: loggedUser,
-        }));
-      } else {
-        dispatch(addFav({
-          id: movieList?.id,
-          email: loggedUser,
-          image: movieList?.poster_path,
-        }));
-      }
-    } else {
-      handleClickOpen();
-    }
-  }
+  const clickObject = {
+    loggedUser,
+    handleClickOpen,
+    dispatch,
+    addFav,
+    deleteFav,
+    fav: getUserDB.favourites,
+  };
 
   return (
     <div id={movies}>
@@ -130,8 +114,8 @@ function MoviesListComponent({
               <>
                 <button
                   type="button"
-                  className={checkFav(movieList.id, fav) ? 'favorite-button favorite-button-active' : 'favorite-button'}
-                  onClick={() => handleClick(movieList)}
+                  className={checkFav(movieList.id, getUserDB.favourites) ? 'favorite-button favorite-button-active' : 'favorite-button'}
+                  onClick={() => handleClick(movieList, clickObject)}
 
                 >
                   <FavoriteIcon />

@@ -1,10 +1,11 @@
+/* eslint-disable no-debugger */
 /* eslint-disable no-plusplus */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Loading from '../Loading/Loading';
-import checkFav from '../../util/function';
+import { checkFav } from '../../util/functions';
 import { addFav, deleteFav } from '../../redux/actions/userAction';
 
 function SearchCommon({
