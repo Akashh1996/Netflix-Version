@@ -10,7 +10,7 @@ function userRouter(User: any) {
     .get(user.getUser)
     .post(user.postUser)
     .put(user.addToFavourites)
-    .patch(user.removeFromFAvourites)
+    .patch(user.removeFromFAvourites);
   return router;
 }
 

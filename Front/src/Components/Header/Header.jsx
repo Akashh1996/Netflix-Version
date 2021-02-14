@@ -7,14 +7,18 @@ import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import { Link as ScrollLink } from 'react-scroll';
 import { loadBySearch } from '../../redux/actions/movieAction';
-import { signInWithGoogle, signOut } from '../../redux/actions/userAction';
+import { signInWithGoogle, signOut, getUser } from '../../redux/actions/userAction';
+
 import './header.scss';
 
-function Header({ dispatch, user }) {
+function Header({ dispatch, getUserDB }) {
   const categoryNames = ['Upcoming', 'Popular', 'Now Playing'];
   const history = useHistory();
   const [show, handleShow] = useState(false);
   const [query, setQuery] = useState('');
+
+  const userLocalStorage = JSON.parse(window.localStorage.getItem('user'));
+  const loggedUser = userLocalStorage?.user?.email;
 
   const handleOnChange = (event) => {
     const eventValue = event.target.value;
@@ -47,12 +51,18 @@ function Header({ dispatch, user }) {
   }, []);
 
   function handleSignIn() {
-    if (!user) {
+    if (!loggedUser) {
       dispatch(signInWithGoogle());
     } else {
       dispatch(signOut());
     }
   }
+
+  useEffect(() => {
+    if (loggedUser && !getUserDB) {
+      dispatch(getUser(loggedUser));
+    }
+  }, []);
 
   return (
     <header>
@@ -79,11 +89,11 @@ function Header({ dispatch, user }) {
                 </ScrollLink>
               ))}
             </div>
-            {user
+            {loggedUser
             && (
             <div className="nav-item__myList">
               {' '}
-              <Link to="/">My List</Link>
+              <Link to="/myList">My List</Link>
               {' '}
             </div>
             )}
@@ -115,14 +125,13 @@ function Header({ dispatch, user }) {
 
               >
                 <img
-                  src={!user ? 'https://i.pinimg.com/originals/30/db/47/30db479e1558c3ed46b4ed23b3cd98ae.png' : 'https://trello-attachments.s3.amazonaws.com/5f9fe516582bea5ce01d06b2/601ea1de7e048c855c38996e/de93a82da9b5d8d211bb570ff9089abc/logout.png'}
-                  alt="logo"
+                  src={!loggedUser ? 'https://i.pinimg.com/originals/30/db/47/30db479e1558c3ed46b4ed23b3cd98ae.png' : 'https://trello-attachments.s3.amazonaws.com/5f9fe516582bea5ce01d06b2/601ea1de7e048c855c38996e/de93a82da9b5d8d211bb570ff9089abc/logout.png'}
+                  alt="login"
                   style={{ width: '34px', borderRadius: '4px', marginTop: '3px' }}
                 />
               </Link>
 
             </div>
-
           </div>
         </div>
       </nav>
@@ -139,6 +148,8 @@ Header.propTypes = {
 function mapStateToProps(state) {
   return {
     user: state.userReducer.user,
+    userDb: state.userReducer.userDB,
+    getUserDB: state.userReducer.getUserDB,
   };
 }
 

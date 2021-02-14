@@ -1,20 +1,35 @@
 /* eslint-disable no-debugger */
 import actionTypes from '../actions/actionTypes';
 
-const initialState = { };
+const initialState = { isLogged: false };
 
 export default function movieReducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.LOGIN_USER:
-      debugger;
+    case actionTypes.ADD_USER:
       return {
         ...state,
-        user: action.user,
+        getUserDB: action.user,
       };
-    case actionTypes.AUTH_LOGOUT:
+    case actionTypes.GET_USER:
       return {
         ...state,
-        user: null,
+        getUserDB: action.getUserDB,
+      };
+
+    case actionTypes.ADD_FAVOURITE:
+      return {
+        ...state,
+        getUserDB: action.userDB,
+      };
+    case actionTypes.DELETE_FAVOURITE:
+      return {
+        ...state,
+        getUserDB: action.userDB,
+      };
+    case actionTypes.CLEAR_USER:
+      return {
+        ...state,
+        getUserDB: null,
       };
 
     default:

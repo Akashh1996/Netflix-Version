@@ -1,10 +1,24 @@
+/* eslint-disable no-plusplus */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Loading from '../Loading/Loading';
 
-function SearchCommon({ movies, loading }) {
+function SearchCommon({ movies, loading, getUserDB }) {
+  let fav;
+  if (getUserDB) {
+    fav = getUserDB.favourites;
+  }
+  function checkFav(id) {
+    let isFav = false;
+    for (let index = 0; index < fav?.length; index++) {
+      if (fav[index].id === id) {
+        isFav = true;
+      }
+    }
+    return isFav;
+  }
   return (
     <div>
       <ul className="image-wrapper">
@@ -16,7 +30,10 @@ function SearchCommon({ movies, loading }) {
             movie.poster_path !== null
             && (
             <>
-              <button type="button" className="favorite-button">
+              <button
+                type="button"
+                className={checkFav(movie.id) === true ? 'favorite-button favorite-button-active' : 'favorite-button'}
+              >
                 <FavoriteIcon />
               </button>
               <Link to={`/detail/${movie.id}`}>
@@ -33,9 +50,10 @@ function SearchCommon({ movies, loading }) {
   );
 }
 
-function mapStateToProps({ movieReducer }) {
+function mapStateToProps({ movieReducer, userReducer }) {
   return {
     loading: movieReducer.loading,
+    getUserDB: userReducer.getUserDB,
   };
 }
 

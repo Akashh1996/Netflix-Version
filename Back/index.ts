@@ -1,5 +1,6 @@
 const app = require('express')();
 const chalk = require('chalk');
+const cors = require('cors');
 const debug = require('debug')('app*');
 const { urlencoded, json } = require('body-parser');
 const { connect } = require('mongoose');
@@ -10,8 +11,9 @@ const userRouter = require('./src/router/userRouter')(User);
 app.use(morgan('dev'));
 app.use(urlencoded({ extended: true }));
 app.use(json());
+app.use(cors());
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5000;
 const URLDB = 'mongodb+srv://root:root@cluster0.s3syf.mongodb.net/Netflix?retryWrites=true&w=majority';
 connect(URLDB, { useUnifiedTopology: true, useNewUrlParser: true });
 
