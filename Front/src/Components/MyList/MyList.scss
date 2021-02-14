@@ -1,0 +1,28 @@
+.favourites-container{
+    width: 100%;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-height: 397px;
+}
+
+.movie-photo{
+    object-fit: contain;
+    width: 100%;
+}
+
+.movie-photo__container{
+    height: 100%;
+    width: 70%;
+    padding: 8px;
+    margin-bottom: 12px;
+}
+
+@media only screen and (min-width: 550px){
+    .movie-photo__container{
+        max-width: 260px;
+    }
+}
