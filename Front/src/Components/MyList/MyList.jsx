@@ -3,15 +3,26 @@ import { connect } from 'react-redux';
 import './MyList.scss';
 import RemoveCircleOutlineOutlinedIcon from '@material-ui/icons/RemoveCircleOutlineOutlined';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { deleteFav } from '../../redux/actions/userAction';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 function MyList({ getUserDB, dispatch }) {
   const favourites = getUserDB?.favourites;
+
+  const notify = () => {
+    toast('Removed From Watch List',
+      { position: toast.POSITION.TOP_RIGHT });
+  };
+
   function handleClick(id) {
     dispatch(deleteFav({
       email: getUserDB?.email,
       id,
     }));
+    notify();
   }
   return (
     <div className="favourites-container">

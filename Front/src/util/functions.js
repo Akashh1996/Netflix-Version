@@ -1,5 +1,19 @@
-/* eslint-disable no-debugger */
 /* eslint-disable no-plusplus */
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
+
+const notifyRemove = () => {
+  toast('Removed from watch List',
+    { position: toast.POSITION.TOP_RIGHT });
+};
+
+const notifyAdd = () => {
+  toast('Added to watch List',
+    { position: toast.POSITION.TOP_RIGHT });
+};
+
 export function checkFav(id, fav) {
   let isFav = false;
   for (let index = 0; index < fav?.length; index++) {
@@ -23,12 +37,14 @@ export function handleClick(
         id: movieList?.id,
         email: loggedUser,
       }));
+      notifyRemove();
     } else {
       dispatch(addFav({
         id: movieList?.id,
         email: loggedUser,
         image: movieList?.poster_path,
       }));
+      notifyAdd();
     }
   } else {
     handleClickOpen();

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Loading from '../Loading/Loading';
-import { checkFav } from '../../util/functions';
+import { checkFav, handleClick } from '../../util/functions';
 import { addFav, deleteFav } from '../../redux/actions/userAction';
 
 function SearchCommon({
@@ -19,23 +19,13 @@ function SearchCommon({
   const userLocalStorage = JSON.parse(window.localStorage.getItem('user'));
   const loggedUser = userLocalStorage?.user?.email;
 
-  function handleClick(movieList) {
-    if (loggedUser) {
-      const bool = fav?.some((e) => e.id === movieList.id);
-      if (bool) {
-        dispatch(deleteFav({
-          id: movieList?.id,
-          email: loggedUser,
-        }));
-      } else {
-        dispatch(addFav({
-          id: movieList?.id,
-          email: loggedUser,
-          image: movieList?.poster_path,
-        }));
-      }
-    }
-  }
+  const clickObject = {
+    loggedUser,
+    dispatch,
+    addFav,
+    deleteFav,
+    fav: getUserDB?.favourites,
+  };
 
   return (
     <div>
@@ -51,8 +41,7 @@ function SearchCommon({
               <button
                 type="button"
                 className={checkFav(movie.id, fav) ? 'favorite-button favorite-button-active' : 'favorite-button'}
-                onClick={() => handleClick(movie)}
-
+                onClick={() => handleClick(movie, clickObject)}
               >
                 <FavoriteIcon />
               </button>
