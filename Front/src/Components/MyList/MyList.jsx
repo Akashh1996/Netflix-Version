@@ -1,20 +1,55 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteFav } from '../../redux/actions/userAction';
 import './MyList.scss';
+import RemoveCircleOutlineOutlinedIcon from '@material-ui/icons/RemoveCircleOutlineOutlined';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { deleteFav } from '../../redux/actions/userAction';
+import 'react-toastify/dist/ReactToastify.css';
 
-function MyList({ getUserDB }) {
-  const fav = getUserDB?.favourites;
+toast.configure();
+
+function MyList({ getUserDB, dispatch }) {
+  const favourites = getUserDB?.favourites;
+
+  const notify = () => {
+    toast('Removed From Watch List',
+      { position: toast.POSITION.TOP_RIGHT });
+  };
+
+  function handleClick(id) {
+    dispatch(deleteFav({
+      email: getUserDB?.email,
+      id,
+    }));
+    notify();
+  }
   return (
     <div className="favourites-container">
-      {fav && fav?.length > 0
-        ? fav.map((user) => (
-          <div className="movie-photo__container">
-            <img key={user.favourites?.id} className="movie-photo" src={`https://image.tmdb.org/t/p/w500/${user.image}`} alt="user-fav" />
-            <button onClick="">BORRAR</button>
+      {favourites && favourites?.length > 0
+        ? favourites.map((fav) => (
+          <div className="movie-photo__container" key={fav?.id || Math.random() * Date.now()}>
+            <button
+              type="button"
+              className="remove-button"
+              onClick={() => handleClick(fav?.id)}
+            >
+              <RemoveCircleOutlineOutlinedIcon />
+            </button>
+            <Link to={`/detail/${fav.id}`}>
+              <img className="movie-photo" src={`https://image.tmdb.org/t/p/w500/${fav.image}`} alt="user-fav" />
+            </Link>
           </div>
+
         )) : (
-          <h1 style={{ marginTop: '80px' }}>You dont have any movies in fav list</h1>
+          <h1 style={{ marginTop: '80px' }}>
+            {' '}
+            {getUserDB?.displayName.split(/\s(.+)/)[0]}
+            {' '}
+            ,
+            {' '}
+            You dont have any movies in your watch list
+          </h1>
         )}
     </div>
   );

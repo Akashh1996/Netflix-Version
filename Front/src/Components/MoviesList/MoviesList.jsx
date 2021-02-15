@@ -1,6 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-undef */
-/* eslint-disable no-debugger */
 /* eslint-disable no-plusplus */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
@@ -9,7 +6,6 @@ import { Link } from 'react-router-dom';
 import './MoviesList.scss';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
-
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
@@ -66,7 +62,7 @@ function MoviesListComponent({
     dispatch,
     addFav,
     deleteFav,
-    fav: getUserDB.favourites,
+    fav: getUserDB?.favourites,
   };
 
   return (
@@ -114,9 +110,8 @@ function MoviesListComponent({
               <>
                 <button
                   type="button"
-                  className={checkFav(movieList.id, getUserDB.favourites) ? 'favorite-button favorite-button-active' : 'favorite-button'}
+                  className={checkFav(movieList.id, getUserDB?.favourites) ? 'favorite-button favorite-button-active' : 'favorite-button'}
                   onClick={() => handleClick(movieList, clickObject)}
-
                 >
                   <FavoriteIcon />
                 </button>

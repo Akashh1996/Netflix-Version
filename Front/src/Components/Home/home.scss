@@ -82,19 +82,26 @@
         padding: 10px 14px;
     }
     .cover-photo{
-        height: 480px; 
+        height: 400px; 
         background-position: right;
 
     }
     .movie-play-info{
         
-        top: 85%;
+        top: 75%;
     }
     .play, .movie-play-info{
         padding: 5px 12.5px;
     }
     .movie-titile img{
-        width: 250px;
+        width: 170px;
+    }
+    .movie-description-wrapper p{
+        line-height: normal;
+        font-size: 13px;
+    }
+    .nav-search{
+        margin-right: 4px;
     }
     
 }

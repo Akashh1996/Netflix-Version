@@ -141,8 +141,8 @@ function deleteFavSuccess(userDB) {
 export function deleteFav(movie) {
   return async (dispatch) => {
     try {
-      const { data: { data } } = await axios.patch(serverUsersUrl, movie);
-      dispatch(deleteFavSuccess(data));
+      const data = await axios.patch(serverUsersUrl, movie);
+      dispatch(deleteFavSuccess(data.data));
     } catch ({ message }) {
       console.log(message);
     }
