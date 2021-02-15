@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import MoviesList from '../MoviesList/MoviesList';
 import { loadMovies, clearDetail } from '../../redux/actions/movieAction';
 import Loading from '../Loading/Loading';
-
 import './home.scss';
+import Footer from '../Footer/Footer';
 
 function Home({
   dispatch, allMovies, categories, videoKey, movieDetail, cast, loading,
@@ -57,6 +57,7 @@ function Home({
       { loading ? <Loading /> : categories?.map((movies) => (
         <MoviesList key={movies} movies={movies} />
       ))}
+      <Footer />
 
     </>
   );
