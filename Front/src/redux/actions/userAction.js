@@ -5,7 +5,7 @@ import firebase from 'firebase';
 import axios from 'axios';
 import actionTypes from './actionTypes';
 
-const serverUsersUrl = 'http://localhost:5000/user';
+const serverUsersUrl = 'https://netflixv2.herokuapp.com/user';
 
 function handleSignInSuccess(user) {
   return {

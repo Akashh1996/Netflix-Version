@@ -18,7 +18,6 @@ function App() {
           <Route path="/search/" exact component={SeachResult} />
           <Route path="/myList/" exact component={MyList} />
         </>
-
       </Switch>
     </BrowserRouter>
   );
