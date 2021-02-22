@@ -6,12 +6,12 @@ toast.configure();
 
 const notifyRemove = () => {
   toast('Removed from watch List',
-    { position: toast.POSITION.TOP_RIGHT });
+    { position: toast.POSITION.TOP_RIGHT, autoClose: 1000 });
 };
 
 const notifyAdd = () => {
   toast('Added to watch List',
-    { position: toast.POSITION.TOP_RIGHT });
+    { position: toast.POSITION.TOP_RIGHT, autoClose: 1000 });
 };
 
 export function checkFav(id, fav) {

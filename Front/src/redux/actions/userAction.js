@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-debugger */
 import '../../Firebase/firebaseIndex';

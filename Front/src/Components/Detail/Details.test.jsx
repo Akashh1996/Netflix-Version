@@ -79,7 +79,6 @@ describe('Given Detail Component', () => {
       render(<Detail match={match} />, { wrapper });
 
       const videoElement = document.querySelector('.player-wrapper');
-      console.log(videoElement);
 
       expect(videoElement).toBeInTheDocument();
     });

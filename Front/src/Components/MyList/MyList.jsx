@@ -14,7 +14,7 @@ function MyList({ getUserDB, dispatch }) {
 
   const notify = () => {
     toast('Removed From Watch List',
-      { position: toast.POSITION.TOP_RIGHT });
+      { position: toast.POSITION.TOP_RIGHT, autoClose: 1000 });
   };
 
   function handleClick(id) {
