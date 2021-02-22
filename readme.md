@@ -22,9 +22,10 @@ Different version of original application Netflix aiming to adapt the styles and
 - Eslint
 
 ### Overview
-The server is uploaded on the heroku cloud and client side is deployed in firebase so the app can run directy at --> [Netflix](https://netflix-318da.web.app/)
+The server is uploaded on the heroku cloud and client side is deployed in firebase so the app can run directy  [Netflix](https://netflix-318da.web.app/)
 
-1.It can be downloaded/cloned and you can start locally with the link above or with the command ``` 
+1.It can be downloaded/cloned and you can start locally with the link above or with the command 
+``` 
 cd front
 npm start
 cd back
