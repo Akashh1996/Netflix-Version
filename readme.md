@@ -35,7 +35,7 @@ npm start
  2. To run the test type the following command on both front and back side.
  ``` 
 cd front
-npm start
+npm run test
 cd back
-npm start
+npm run test
  ```
