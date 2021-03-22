@@ -56,7 +56,7 @@ function Detail({
               </div>
               <div className="movie-detail__extra">
                 {movieDetail.genres.map((genre) => (
-                  <span key={genre.name} className="genre">
+                  <span key={genre.name || Math.random()} className="genre">
                     {genre.name}
                     <span className="genre__seperator">|</span>
                   </span>
@@ -89,7 +89,7 @@ function Detail({
 
           <div className="casts">
             {cast.cast.slice(0, 4).map((actor) => (
-              <div className="casts-info" key={actor.name}>
+              <div className="casts-info" key={actor.name || Math.random()}>
                 {actor.profile_path !== null
                     && (
                       <a href={`https://en.wikipedia.org/wiki/${getWiki(actor.name)}`} target="_blank" rel="noreferrer" key={actor.name}>

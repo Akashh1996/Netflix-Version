@@ -113,7 +113,7 @@ describe('Given movieActions', () => {
       test(`Then should call dispatch with an object with type ${actionTypes.LOAD_VIDEO} a video key`, async () => {
         axios.get = jest.fn().mockImplementation(() => Promise.resolve({ data: { results: [{ key: '123abcd' }] } }));
 
-        const expectedAction = { type: actionTypes.LOAD_VIDEO, video: '123abcd' };
+        const expectedAction = { type: actionTypes.LOAD_VIDEO, videoKey: '123abcd' };
 
         await loadVideo(12)(dispatch);
 

@@ -67,7 +67,9 @@ describe('Given Detail Component', () => {
             genres: ['Terror', 'Suspense'],
           },
           cast: {
-            cast: ['Santiago Robinet', 'Akash Sapkota'],
+            cast: [{
+              name: 'Akash Sapkota',
+            }],
           },
           loading: false,
           video: '5qap5aO4i9A',
@@ -79,7 +81,6 @@ describe('Given Detail Component', () => {
       render(<Detail match={match} />, { wrapper });
 
       const videoElement = document.querySelector('.player-wrapper');
-      console.log(videoElement);
 
       expect(videoElement).toBeInTheDocument();
     });

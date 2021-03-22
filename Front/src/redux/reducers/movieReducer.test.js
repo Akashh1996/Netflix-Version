@@ -182,13 +182,13 @@ describe('Given movieReducer function', () => {
 
       const expectedState = {
         ...initialState,
-        video: 'Video',
         loading: false,
+        videoKey: '1234',
       };
 
       const action = {
         type: actionTypes.LOAD_VIDEO,
-        video: 'Video',
+        videoKey: '1234',
       };
 
       newState = movieReducer(initialState, action);
