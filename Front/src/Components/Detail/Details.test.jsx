@@ -67,7 +67,9 @@ describe('Given Detail Component', () => {
             genres: ['Terror', 'Suspense'],
           },
           cast: {
-            cast: ['Santiago Robinet', 'Akash Sapkota'],
+            cast: [{
+              name: 'Akash Sapkota',
+            }],
           },
           loading: false,
           video: '5qap5aO4i9A',

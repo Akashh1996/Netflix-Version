@@ -12,7 +12,9 @@ describe('Given userReducer function', () => {
     test('Then should return an empty object', () => {
       newState = userReducer(undefined, true);
 
-      expect(newState).toEqual({});
+      expect(newState).toEqual({
+        isLogged: false,
+      });
     });
   });
 
@@ -21,9 +23,6 @@ describe('Given userReducer function', () => {
       const initialState = {};
       const action = {
         type: actionTypes.LOGIN_USER,
-        user: {
-          displayName: 'akash',
-        },
       };
 
       newState = userReducer(initialState, action);
@@ -42,12 +41,11 @@ describe('Given userReducer function', () => {
 
       const action = {
         type: actionTypes.AUTH_LOGOUT,
-        user: null,
       };
 
       newState = userReducer(initialState, action);
 
-      expect(newState).toEqual({ ...initialState, user: action.user });
+      expect(newState).toEqual({ ...initialState });
     });
   });
 });
